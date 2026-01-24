@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://ct6dcr7qtsamo"]
+[gd_scene load_steps=12 format=3 uid="uid://ct6dcr7qtsamo"]
 
 [ext_resource type="Script" uid="uid://delfsbhi7fgkv" path="res://scenes/player/player.gd" id="1_beej8"]
 [ext_resource type="Script" uid="uid://d1rjw7nsb1ymd" path="res://scripts/gameplay/hurtbox.gd" id="2_cv68x"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://y36k7rxn4fpp" path="res://scenes/abilities/rocket_launcher/rocket_launcher.tscn" id="3_cv68x"]
 [ext_resource type="Script" uid="uid://55mvtmp82ky7" path="res://scripts/gameplay/health_component.gd" id="5_cv68x"]
 [ext_resource type="PackedScene" uid="uid://3vpfape4my6u" path="res://scenes/abilities/float_shield/float_shield_ability.tscn" id="6_7awel"]
+[ext_resource type="PackedScene" uid="uid://fl5wsepg6lvn" path="res://scenes/abilities/pharah_flight/PharahFlight.tscn" id="7_dguuj"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_pjt0s"]
 
@@ -51,3 +52,5 @@ script = ExtResource("5_cv68x")
 shape = SubResource("CapsuleShape3D_pjt0s")
 
 [node name="FloatShieldAbility" parent="." instance=ExtResource("6_7awel")]
+
+[node name="PharahFlight" parent="." instance=ExtResource("7_dguuj")]

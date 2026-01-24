@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://fl5wsepg6lvn"]
+
+[ext_resource type="Script" uid="uid://bw0pur82u1krb" path="res://scenes/abilities/pharah_flight/pharah_flight.gd" id="1_fucpy"]
+
+[node name="PharahFlight" type="Node3D"]
+script = ExtResource("1_fucpy")
