@@ -6,8 +6,8 @@ var lineEdit = $"../LineEdit"
  
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
-
+	multiplayer.connected_to_server.connect(_on_connected_to_server)
+	multiplayer.connection_failed.connect(_on_connection_failed)
 
 func _on_pressed() -> void:
 	var ip = lineEdit.text
@@ -28,7 +28,7 @@ func join_game(address: String = "127.0.0.1"):
 		return
 		
 	multiplayer.multiplayer_peer = peer
-	print("Attempting to connect to ", address)
+	print("Attempting to connect to ", address, ":" , PORT)
 	
 func _on_connected_to_server():
 	print("Successfully connected to the server!")
