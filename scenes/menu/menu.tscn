@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://cho0rrlnqk2wt"]
+[gd_scene load_steps=4 format=3 uid="uid://cho0rrlnqk2wt"]
 
 [ext_resource type="Script" uid="uid://cdekt81cskj8h" path="res://scenes/menu/connect.gd" id="1_klgdb"]
 [ext_resource type="Script" uid="uid://bwak73dko45bd" path="res://scenes/menu/host.gd" id="2_mcvr8"]
+[ext_resource type="PackedScene" uid="uid://cyjfreye6e0em" path="res://scenes/maps/test_map/test_map.tscn" id="3_e0arn"]
 
 [node name="Node3D" type="Node3D"]
 
@@ -48,6 +49,8 @@ offset_right = 680.0
 offset_bottom = 100.0
 text = "HOST (PORT 21057)"
 script = ExtResource("2_mcvr8")
+
+[node name="TestMap" parent="." instance=ExtResource("3_e0arn")]
 
 [connection signal="pressed" from="Menu/Client/Button" to="Menu/Client/Button" method="_on_pressed"]
 [connection signal="pressed" from="Menu/Server/Button" to="Menu/Server/Button" method="_on_pressed"]

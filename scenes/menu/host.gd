@@ -2,6 +2,7 @@ extends Button
 
 var PORT = 21057
 const MAX_CLIENTS = 8
+@onready var menuNode = (($"../..") as Control)
 
 func _on_pressed() -> void:
 	print("Hello $PORT", PORT)
@@ -29,7 +30,13 @@ func host_game():
 
 # Called on the server when a new player joins
 func _on_player_connected(id):
+	
 	print("Player connected: ", id)
+	print("Players: " + str(len(multiplayer.get_peers()) + 1) + "/3")
+	
+	if len(multiplayer.get_peers()) + 1 >= 3:
+		menuNode.visible = false
+		
 
 # Called on the server when a player leaves
 func _on_player_disconnected(id):
