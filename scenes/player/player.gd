@@ -11,9 +11,10 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
 		rotate_y(-event.relative.x * mouse_sensitivity)
 
+	if event.is_action_pressed("ui_cancel"):
+		get_tree().quit()
+
 func _physics_process(delta: float) -> void:
-	
-	var mouse_delta = Input.get_last_mouse_velocity()
 	
 	# Add the gravity.
 	if not is_on_floor():
