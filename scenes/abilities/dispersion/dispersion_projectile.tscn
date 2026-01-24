@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://5xg1jc2dy2u8"]
+[gd_scene load_steps=7 format=3 uid="uid://5xg1jc2dy2u8"]
 
 [ext_resource type="Script" uid="uid://di812gmsow8br" path="res://scenes/abilities/dispersion/dispersion_projectile.gd" id="1_yos1s"]
+[ext_resource type="AudioStream" uid="uid://bvrc31qsu7jht" path="res://scenes/abilities/dispersion/laser_explosion.mp3" id="2_84ywy"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_84ywy"]
 
@@ -24,9 +25,14 @@ transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 mesh = SubResource("SphereMesh_x8ojt")
 
 [node name="BlastRadius" type="Area3D" parent="."]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="BlastRadius"]
 shape = SubResource("SphereShape3D_febf1")
 
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("2_84ywy")
+
+[node name="Timer" type="Timer" parent="."]
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -58,3 +58,5 @@ shape = SubResource("CapsuleShape3D_pjt0s")
 [node name="PharahFlight" parent="." instance=ExtResource("7_dguuj")]
 
 [node name="Dispersion" parent="." instance=ExtResource("8_3nqsm")]
+
+[node name="AudioListener3D" type="AudioListener3D" parent="."]

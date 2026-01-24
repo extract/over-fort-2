@@ -8,6 +8,7 @@ extends Node3D
 var remaining_cooldown = 0
 
 func doAction():
+	$AudioStreamPlayer3D.play()
 	remaining_cooldown = cooldown
 	var inst = projectile.instantiate()
 	inst.transform = (%Crosshair as Node3D).global_transform
