@@ -1,4 +1,9 @@
 extends Button
+@export var startMap : PackedScene
+@export var playerScene : PackedScene
+@export var lobbyScene : PackedScene
+@onready var networkNode = $"../../../Network"
+
 
 var PORT = 21057
 const MAX_CLIENTS = 8
@@ -27,6 +32,10 @@ func host_game():
 	# 3. Assign the peer to the multiplayer API
 	multiplayer.multiplayer_peer = peer
 	print("Server started on port ", PORT)
+	get_node("/root/").add_child(lobbyScene.instantiate())
+	menuNode.visible = false
+	
+	
 
 # Called on the server when a new player joins
 func _on_player_connected(id):
@@ -35,8 +44,7 @@ func _on_player_connected(id):
 	print("Players: " + str(len(multiplayer.get_peers()) + 1) + "/3")
 	
 	if len(multiplayer.get_peers()) + 1 >= 3:
-		menuNode.visible = false
-		
+		print("aa")
 
 # Called on the server when a player leaves
 func _on_player_disconnected(id):

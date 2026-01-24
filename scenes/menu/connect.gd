@@ -1,8 +1,9 @@
 extends Button
 
 var PORT = 21057
-@onready 
-var lineEdit = $"../LineEdit"
+@onready var lineEdit = $"../LineEdit"
+@export var lobbyScene : PackedScene
+@onready var menuNode = (($"../..") as Control)
  
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -31,6 +32,8 @@ func join_game(address: String = "127.0.0.1"):
 	print("Attempting to connect to ", address, ":" , PORT)
 	
 func _on_connected_to_server():
+	get_node("/root/").add_child(lobbyScene.instantiate())
+	menuNode.visible = false
 	print("Successfully connected to the server!")
 
 func _on_connection_failed():

@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://dn6ln2qk6dbtr"]
+[gd_scene load_steps=8 format=3 uid="uid://dn6ln2qk6dbtr"]
 
 [ext_resource type="Script" uid="uid://delfsbhi7fgkv" path="res://scenes/player/player.gd" id="1_glpr6"]
 [ext_resource type="Script" uid="uid://bxyw1qh8owlet" path="res://scenes/player/camera_look.gd" id="2_dovo2"]
@@ -12,6 +12,14 @@ albedo_color = Color(0.20784314, 0.5568628, 0.48235294, 1)
 
 [sub_resource type="SphereMesh" id="SphereMesh_dovo2"]
 material = SubResource("StandardMaterial3D_8afob")
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_dovo2"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath(".:rotation")
+properties/1/spawn = true
+properties/1/replication_mode = 1
 
 [node name="Player" type="CharacterBody3D"]
 script = ExtResource("1_glpr6")
@@ -29,3 +37,6 @@ script = ExtResource("2_dovo2")
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.42697042, -0.15429068)
 mesh = SubResource("SphereMesh_dovo2")
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_dovo2")

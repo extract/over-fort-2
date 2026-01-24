@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://dsqddxnd6obw"]
+
+[ext_resource type="PackedScene" uid="uid://du0ni00nm5poi" path="res://scenes/shapes/static/floor_10x_10.tscn" id="1_by1pr"]
+[ext_resource type="PackedScene" uid="uid://capis0p76uoxd" path="res://scenes/maps/lobby/lobby_ui.tscn" id="2_4t2je"]
+
+[node name="Lobby" type="Node3D"]
+
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
+_spawnable_scenes = PackedStringArray("uid://dn6ln2qk6dbtr", "uid://cyjfreye6e0em")
+spawn_path = NodePath("..")
+
+[node name="Floor10x10" parent="." instance=ExtResource("1_by1pr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.8027499, 3.6703434)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.079503775, 0)
+
+[node name="LobbyUi" parent="." instance=ExtResource("2_4t2je")]
+offset_right = -953.8957
+offset_bottom = -620.51184
+scale = Vector2(1.055, 1.055)
