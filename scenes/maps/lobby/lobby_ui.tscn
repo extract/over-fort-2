@@ -1,4 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://capis0p76uoxd"]
+[gd_scene load_steps=3 format=3 uid="uid://capis0p76uoxd"]
+
+[ext_resource type="Script" uid="uid://c5otu0rdfbuf4" path="res://scenes/maps/lobby/player_count_update.gd" id="1_1uroi"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_linbj"]
 font_size = 81
@@ -33,3 +35,4 @@ offset_bottom = 248.0
 text = "(N/3) connected"
 label_settings = SubResource("LabelSettings_linbj")
 horizontal_alignment = 1
+script = ExtResource("1_1uroi")
