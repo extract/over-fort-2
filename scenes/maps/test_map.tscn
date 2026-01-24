@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://cyjfreye6e0em"]
+
+[ext_resource type="PackedScene" uid="uid://du0ni00nm5poi" path="res://scenes/shapes/floor_10x_10.tscn" id="1_2s55i"]
+[ext_resource type="PackedScene" uid="uid://dn6ln2qk6dbtr" path="res://scenes/player/player.tscn" id="2_o3n0h"]
+
+[node name="TestMap" type="Node"]
+
+[node name="Floor10x10" parent="." instance=ExtResource("1_2s55i")]
+
+[node name="Player" parent="." instance=ExtResource("2_o3n0h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.7222877, 0)
