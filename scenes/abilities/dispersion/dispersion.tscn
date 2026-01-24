@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://dnwtc4achkn4m"]
+
+[ext_resource type="Script" uid="uid://b80d6r0dhshi7" path="res://scenes/abilities/dispersion/dispersion.gd" id="1_jmbqd"]
+[ext_resource type="PackedScene" uid="uid://5xg1jc2dy2u8" path="res://scenes/abilities/dispersion/dispersion_projectile.tscn" id="2_7ew5p"]
+
+[node name="Dispersion" type="Node3D"]
+script = ExtResource("1_jmbqd")
+projectile = ExtResource("2_7ew5p")
