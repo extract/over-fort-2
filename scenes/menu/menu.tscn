@@ -1,32 +1,53 @@
-[gd_scene load_steps=2 format=3 uid="uid://cho0rrlnqk2wt"]
+[gd_scene load_steps=3 format=3 uid="uid://cho0rrlnqk2wt"]
 
 [ext_resource type="Script" uid="uid://cdekt81cskj8h" path="res://scenes/menu/connect.gd" id="1_klgdb"]
+[ext_resource type="Script" uid="uid://bwak73dko45bd" path="res://scenes/menu/host.gd" id="2_mcvr8"]
 
 [node name="Node3D" type="Node3D"]
 
 [node name="Network" type="Node" parent="."]
 
-[node name="Control" type="Control" parent="."]
+[node name="Menu" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="Button" type="Button" parent="Control"]
+[node name="Client" type="Control" parent="Menu"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Button" type="Button" parent="Menu/Client"]
 layout_mode = 0
-offset_left = 267.0
-offset_top = 2.0
-offset_right = 351.0
-offset_bottom = 33.0
+offset_left = 480.0
+offset_top = 10.0
+offset_right = 564.0
+offset_bottom = 41.0
 text = "CONNECT"
 script = ExtResource("1_klgdb")
 
-[node name="LineEdit" type="LineEdit" parent="Control"]
+[node name="LineEdit" type="LineEdit" parent="Menu/Client"]
 layout_mode = 0
-offset_left = 1.0
-offset_top = 1.0
-offset_right = 69.5625
-offset_bottom = 32.0
-scale = Vector2(3.8550673, 1)
+offset_left = 3.0
+offset_top = 10.0
+offset_right = 483.0
+offset_bottom = 41.0
+placeholder_text = "ENTER SERVER IP ADDRESS TO CONNECT TO"
 
-[connection signal="pressed" from="Control/Button" to="Control/Button" method="_on_pressed"]
+[node name="Server" type="Control" parent="Menu"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Button" type="Button" parent="Menu/Server"]
+layout_mode = 0
+offset_left = 480.0
+offset_top = 50.0
+offset_right = 680.0
+offset_bottom = 100.0
+text = "HOST (PORT 21057)"
+script = ExtResource("2_mcvr8")
+
+[connection signal="pressed" from="Menu/Client/Button" to="Menu/Client/Button" method="_on_pressed"]
+[connection signal="pressed" from="Menu/Server/Button" to="Menu/Server/Button" method="_on_pressed"]
