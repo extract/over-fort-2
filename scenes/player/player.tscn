@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://dn6ln2qk6dbtr"]
+[gd_scene load_steps=7 format=3 uid="uid://dn6ln2qk6dbtr"]
 
 [ext_resource type="Script" uid="uid://delfsbhi7fgkv" path="res://scenes/player/player.gd" id="1_glpr6"]
+[ext_resource type="Script" uid="uid://bxyw1qh8owlet" path="res://scenes/player/camera_look.gd" id="2_dovo2"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_pjt0s"]
 
@@ -23,6 +24,7 @@ mesh = SubResource("CapsuleMesh_wa5vi")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.61238444, -0.5153255)
+script = ExtResource("2_dovo2")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.42697042, -0.15429068)
