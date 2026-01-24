@@ -8,7 +8,7 @@ var inst: Node3D
 @export var cooldown = 2
 var cooldown_left = 0
 var is_shield_active = false
-@export var shield_speed = 1
+@export var shield_speed = 4
 
 func doAction():
 	cooldown_left = cooldown
@@ -18,10 +18,7 @@ func doAction():
 		is_shield_active = false
 	else:
 		inst = float_shield.instantiate()
-		#inst.rotation = global_rotation
-		inst.transform = inst.transform.looking_at(-(%Camera3D as Camera3D).global_transform.basis.z)
-		inst.position = global_position
-
+		inst.transform = %Crosshair.global_transform
 		get_node("/root").add_child(inst)
 		is_shield_active = true
 	

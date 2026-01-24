@@ -27,3 +27,4 @@ shape = SubResource("BoxShape3D_oyhfb")
 
 [node name="Hitpoints" type="Node" parent="."]
 script = ExtResource("2_jvqag")
+max_health = 50.0

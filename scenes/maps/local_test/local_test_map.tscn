@@ -23,7 +23,7 @@ transform = Transform3D(0.25584882, 0.44314346, -0.85916543, 0.42958266, 0.74405
 transform = Transform3D(-5.732056e-15, 4.371139e-08, 1, 1, 1.3113416e-07, 0, -1.3113416e-07, 1, -4.371139e-08, -9.982986, 4.9829865, 15.916735)
 
 [node name="LocalPlayer" parent="." instance=ExtResource("4_u1u77")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.064253, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.4430141, 0)
 speed = 18.0
 
 [node name="Bunch of boxes" type="Node" parent="."]

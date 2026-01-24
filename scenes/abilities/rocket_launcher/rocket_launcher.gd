@@ -9,8 +9,7 @@ var cooldown_left=0
 func doAbility():
 	cooldown_left = cooldown
 	var inst: Node3D = rocket.instantiate()
-	inst.position = global_position + Vector3(0, 2,0)
-	inst.rotation = global_rotation
+	inst.transform = %Crosshair.global_transform
 	get_node("/root").add_child(inst)
 	
 
