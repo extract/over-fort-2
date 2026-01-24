@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="OverFort2"
-run/main_scene="uid://cho0rrlnqk2wt"
+run/main_scene="uid://dqhhnv08q6fe6"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
 

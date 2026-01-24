@@ -1,8 +1,7 @@
-extends RigidBody3D
+extends Node3D
 
 
 @export var speed = 10
-@export var damage = 10
 
 
 func _process(delta: float) -> void:

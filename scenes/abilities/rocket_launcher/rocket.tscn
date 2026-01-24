@@ -1,0 +1,29 @@
+[gd_scene load_steps=6 format=3 uid="uid://blccu0n2svk1"]
+
+[ext_resource type="Script" uid="uid://dqmuhliorg0ci" path="res://scenes/abilities/rocket_launcher/rocket.gd" id="1_3341w"]
+[ext_resource type="Script" uid="uid://lnpoiudlfafe" path="res://scripts/gameplay/hitbox.gd" id="2_cjd58"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qkmm1"]
+albedo_color = Color(0.593, 3.609, 12.061, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_agf72"]
+material = SubResource("StandardMaterial3D_qkmm1")
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_dkv7l"]
+radius = 0.1
+height = 1.0
+
+[node name="Rocket" type="Node3D"]
+script = ExtResource("1_3341w")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.2, 0, 0, 0, -2.1855694e-08, -0.2, 0, 0.5, -8.742278e-09, 0, 0, 0)
+mesh = SubResource("CapsuleMesh_agf72")
+
+[node name="HitBox" type="Area3D" parent="."]
+script = ExtResource("2_cjd58")
+damage = 25.0
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="HitBox"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
+shape = SubResource("CapsuleShape3D_dkv7l")

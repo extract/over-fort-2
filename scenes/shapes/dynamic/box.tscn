@@ -1,13 +1,29 @@
-[gd_scene load_steps=3 format=3 uid="uid://dgsrfg1p7easw"]
+[gd_scene load_steps=6 format=3 uid="uid://dgsrfg1p7easw"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_oyhfb"]
+[ext_resource type="Script" uid="uid://vqylal45mlcd" path="res://scripts/gameplay/remove_on_death.gd" id="1_jvqag"]
+[ext_resource type="Script" uid="uid://d1rjw7nsb1ymd" path="res://scripts/gameplay/hurtbox.gd" id="1_t8jlp"]
+[ext_resource type="Script" uid="uid://55mvtmp82ky7" path="res://scripts/gameplay/health_component.gd" id="2_jvqag"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_g2tbl"]
 
-[node name="Box" type="RigidBody3D"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_oyhfb"]
+
+[node name="Box" type="RigidBody3D" node_paths=PackedStringArray("health_component")]
+script = ExtResource("1_jvqag")
+health_component = NodePath("Hitpoints")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_g2tbl")
+
+[node name="Hurtbox" type="Area3D" parent="." node_paths=PackedStringArray("health_component")]
+script = ExtResource("1_t8jlp")
+health_component = NodePath("../Hitpoints")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hurtbox"]
+shape = SubResource("BoxShape3D_oyhfb")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_oyhfb")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = SubResource("BoxMesh_g2tbl")
+[node name="Hitpoints" type="Node" parent="."]
+script = ExtResource("2_jvqag")

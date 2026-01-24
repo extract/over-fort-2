@@ -11,9 +11,6 @@
 transform = Transform3D(1, 0, 0, 0, 0.5465113, 0.83745176, 0, -0.83745176, 0.5465113, 0, 7.6711407, 7.299741)
 light_color = Color(1, 1, 0.8745098, 1)
 
-[node name="Box" parent="." instance=ExtResource("1_2es1a")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.4083147, -3.2461233)
-
 [node name="Floor100x100" parent="." instance=ExtResource("2_tc2xj")]
 
 [node name="Floor10x10" parent="." instance=ExtResource("3_v82ge")]
@@ -27,3 +24,24 @@ transform = Transform3D(-5.732056e-15, 4.371139e-08, 1, 1, 1.3113416e-07, 0, -1.
 
 [node name="LocalPlayer" parent="." instance=ExtResource("4_u1u77")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.064253, 0)
+speed = 18.0
+
+[node name="Bunch of boxes" type="Node" parent="."]
+
+[node name="Box" parent="Bunch of boxes" instance=ExtResource("1_2es1a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.4083147, -3.2461233)
+
+[node name="HittableBox" parent="Bunch of boxes" instance=ExtResource("1_2es1a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.7144995, -3.2461233)
+
+[node name="HittableBox2" parent="Bunch of boxes" instance=ExtResource("1_2es1a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.0041933, -3.2461233)
+
+[node name="Box2" parent="Bunch of boxes" instance=ExtResource("1_2es1a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.502559, -3.2461233)
+
+[node name="Box3" parent="Bunch of boxes" instance=ExtResource("1_2es1a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.7478743, 2.8200998, -3.2461233)
+
+[node name="Box4" parent="Bunch of boxes" instance=ExtResource("1_2es1a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3116567, 4.0144024, -3.2461233)
