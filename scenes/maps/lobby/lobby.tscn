@@ -16,6 +16,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.8027499, 3.6703434)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.079503775, 0)
 
 [node name="LobbyUi" parent="." instance=ExtResource("2_4t2je")]
+unique_name_in_owner = true
 offset_right = -953.8957
 offset_bottom = -620.51184
 scale = Vector2(1.055, 1.055)

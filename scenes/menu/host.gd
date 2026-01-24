@@ -4,6 +4,7 @@ extends Button
 @export var lobbyScene : PackedScene
 @onready var networkNode = $"../../../Network"
 
+var hasStartedPlaying = false
 
 var PORT = 21057
 const MAX_CLIENTS = 8
@@ -33,18 +34,31 @@ func host_game():
 	multiplayer.multiplayer_peer = peer
 	print("Server started on port ", PORT)
 	get_node("/root/").add_child(lobbyScene.instantiate())
+	_add_player(1)
 	menuNode.visible = false
-	
-	
+
+func _add_player(id):
+	var playerInstance = playerScene.instantiate()
+	playerInstance.name = "player_" + str(id)
+	get_node("/root/Node3D/Network").add_child(playerInstance)
+	pass
 
 # Called on the server when a new player joins
 func _on_player_connected(id):
-	
+	_add_player(id)
 	print("Player connected: ", id)
 	print("Players: " + str(len(multiplayer.get_peers()) + 1) + "/3")
 	
-	if len(multiplayer.get_peers()) + 1 >= 3:
-		print("aa")
+	#lobbyInstance.get_node("LobbyUi/Control/Label2").text = "lol"
+	
+	if len(multiplayer.get_peers()) + 1 >= 3 and !hasStartedPlaying:
+		hasStartedPlaying = true
+		var lobbyNode = get_node("/root/Lobby")
+		get_node("/root").remove_child(lobbyNode)
+		var mapInstance = startMap.instantiate()
+		get_node("/root/Node3D/Network").add_child(mapInstance)
+		
+		#lobbyInstance.visible = false
 
 # Called on the server when a player leaves
 func _on_player_disconnected(id):
