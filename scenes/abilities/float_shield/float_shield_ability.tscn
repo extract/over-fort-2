@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://3vpfape4my6u"]
+
+[ext_resource type="Script" uid="uid://ctwoniote23ob" path="res://scenes/abilities/float_shield/float_shield_ability.gd" id="1_1fffe"]
+[ext_resource type="PackedScene" uid="uid://dvbw744qdv2am" path="res://scenes/abilities/float_shield/float_shield.tscn" id="2_3qoo0"]
+
+[node name="FloatShieldAbility" type="Node3D"]
+script = ExtResource("1_1fffe")
+float_shield = ExtResource("2_3qoo0")
