@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://dvbw744qdv2am"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_d5ytt"]
+size = Vector3(2, 1, 0.1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a1dse"]
+transparency = 1
+albedo_color = Color(0.34901962, 0.8235294, 1, 0.3372549)
+
+[sub_resource type="BoxMesh" id="BoxMesh_dgaw8"]
+material = SubResource("StandardMaterial3D_a1dse")
+
+[node name="FloatShield" type="Area3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_d5ytt")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(2, 0, 0, 0, 1, 0, 0, 0, 0.1, 0, 0, 0)
+mesh = SubResource("BoxMesh_dgaw8")
+skeleton = NodePath("../..")

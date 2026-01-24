@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://ct6dcr7qtsamo"]
+[gd_scene load_steps=9 format=3 uid="uid://ct6dcr7qtsamo"]
 
 [ext_resource type="Script" uid="uid://delfsbhi7fgkv" path="res://scenes/player/player.gd" id="1_beej8"]
 [ext_resource type="Script" uid="uid://bxyw1qh8owlet" path="res://scenes/player/camera_look.gd" id="2_okac2"]
-[ext_resource type="PackedScene" uid="uid://y36k7rxn4fpp" path="res://scenes/rocket_launcher/rocket_launcher.tscn" id="3_cv68x"]
+[ext_resource type="PackedScene" uid="uid://y36k7rxn4fpp" path="res://scenes/abilities/rocket_launcher/rocket_launcher.tscn" id="3_cv68x"]
+[ext_resource type="PackedScene" uid="uid://3vpfape4my6u" path="res://scenes/abilities/float_shield/float_shield_ability.tscn" id="4_okac2"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_pjt0s"]
 
@@ -24,6 +25,7 @@ shape = SubResource("CapsuleShape3D_pjt0s")
 mesh = SubResource("CapsuleMesh_wa5vi")
 
 [node name="Camera3D" type="Camera3D" parent="."]
+unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.61238444, -0.5153255)
 script = ExtResource("2_okac2")
 
@@ -32,3 +34,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.42697042, -0.15429068)
 mesh = SubResource("SphereMesh_dovo2")
 
 [node name="RocketLauncher" parent="." instance=ExtResource("3_cv68x")]
+
+[node name="FloatShieldAbility" parent="." instance=ExtResource("4_okac2")]

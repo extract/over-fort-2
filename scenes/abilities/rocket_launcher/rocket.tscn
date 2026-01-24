@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://blccu0n2svk1"]
 
-[ext_resource type="Script" uid="uid://dqmuhliorg0ci" path="res://scenes/rocket_launcher/rocket.gd" id="1_3341w"]
+[ext_resource type="Script" uid="uid://dqmuhliorg0ci" path="res://scenes/abilities/rocket_launcher/rocket.gd" id="1_3341w"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_dkv7l"]
 radius = 0.1
