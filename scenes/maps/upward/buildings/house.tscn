@@ -1,0 +1,51 @@
+[gd_scene load_steps=9 format=3 uid="uid://wmlsvitriv3a"]
+
+[ext_resource type="Texture2D" uid="uid://ss5wji2fgmfa" path="res://assets/Buildings Models/DIFFUSE.jpg" id="1_0i0ls"]
+[ext_resource type="ArrayMesh" uid="uid://c0jxshce0ui6p" path="res://assets/Buildings Models/obj/building_0.obj" id="2_drrcu"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x8rqh"]
+albedo_texture = ExtResource("1_0i0ls")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0i0ls"]
+size = Vector3(30.365234, 19.34375, 30.405396)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_drrcu"]
+size = Vector3(9.86, 17.670893, 8.605)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_x8rqh"]
+size = Vector3(12.688477, 1, 6.37)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lh1rf"]
+size = Vector3(10.692871, 1, 30.42871)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_86i68"]
+size = Vector3(14.936035, 6.319824, 15.500977)
+
+[node name="House" type="Node3D"]
+
+[node name="Building0" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.007783, 0, -6.8696203)
+material_override = SubResource("StandardMaterial3D_x8rqh")
+mesh = ExtResource("2_drrcu")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Building0"]
+
+[node name="House" type="CollisionShape3D" parent="Building0/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.722516, 9.97945, 3.1929321)
+shape = SubResource("BoxShape3D_0i0ls")
+
+[node name="Tower" type="CollisionShape3D" parent="Building0/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.888115, 29.49619, -5.687416)
+shape = SubResource("BoxShape3D_drrcu")
+
+[node name="DoorRoof" type="CollisionShape3D" parent="Building0/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.128071, 9.138636, -14.075409)
+shape = SubResource("BoxShape3D_x8rqh")
+
+[node name="SideRoof" type="CollisionShape3D" parent="Building0/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.793166, 11.782139, 2.7143555)
+shape = SubResource("BoxShape3D_lh1rf")
+
+[node name="Roof" type="CollisionShape3D" parent="Building0/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.9117088, 24.08699, 0)
+shape = SubResource("BoxShape3D_86i68")
