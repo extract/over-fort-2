@@ -7,6 +7,7 @@ var remaining_fly_time = max_fly_time
 @export var action_key = "jump"
 
 @onready var cb: CharacterBody3D = $".."
+@onready var asp: AudioStreamPlayer3D = $AudioStreamPlayer3D
 
 func _physics_process(delta: float) -> void:
 	
@@ -14,8 +15,15 @@ func _physics_process(delta: float) -> void:
 		remaining_fly_time += delta
 		clamp(remaining_fly_time,0,max_fly_time)
 	
+	if remaining_fly_time < 0:
+		if asp.playing:
+				asp.stop()
+	
 	if Input.is_action_pressed("jump") and remaining_fly_time > 0:
 		cb.velocity.y += fly_power
 		remaining_fly_time -= delta
+		if not asp.playing:
+			asp.play()
+	
 		
 		
