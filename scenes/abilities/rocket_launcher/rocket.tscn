@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://blccu0n2svk1"]
+[gd_scene load_steps=12 format=3 uid="uid://blccu0n2svk1"]
 
 [ext_resource type="Script" uid="uid://dqmuhliorg0ci" path="res://scenes/abilities/rocket_launcher/rocket.gd" id="1_3341w"]
 [ext_resource type="Script" uid="uid://lnpoiudlfafe" path="res://scripts/gameplay/hitbox.gd" id="2_cjd58"]
@@ -14,6 +14,16 @@ material = SubResource("StandardMaterial3D_qkmm1")
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_dkv7l"]
 radius = 0.1
 height = 1.0
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_jnhbt"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mgciu"]
+albedo_color = Color(1, 0.24313726, 0.03137255, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_3jbua"]
+material = SubResource("StandardMaterial3D_mgciu")
+
+[sub_resource type="Skin" id="Skin_pr3s5"]
 
 [node name="Rocket" type="Node3D"]
 script = ExtResource("1_3341w")
@@ -39,6 +49,14 @@ stream = ExtResource("3_jnhbt")
 stream = ExtResource("4_mgciu")
 
 [node name="Timer" type="Timer" parent="."]
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+amount = 24
+lifetime = 1.97
+one_shot = true
+process_material = SubResource("ParticleProcessMaterial_jnhbt")
+draw_pass_1 = SubResource("SphereMesh_3jbua")
+draw_skin = SubResource("Skin_pr3s5")
 
 [connection signal="area_entered" from="HitBox" to="." method="_on_hit_box_area_entered"]
 [connection signal="body_entered" from="HitBox" to="." method="_on_hit_box_body_entered"]
