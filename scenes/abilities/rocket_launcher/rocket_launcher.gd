@@ -15,7 +15,7 @@ func doAbility():
 	cooldown_left = cooldown
 	var inst: Node3D = rocket.instantiate()
 	
-	inst.transform = get_parent().global_transform
+	inst.transform = get_parent_node_3d().global_transform
 	if spawnPoint != null:
 		inst.transform = spawnPoint.global_transform
 	get_node("/root").add_child(inst)

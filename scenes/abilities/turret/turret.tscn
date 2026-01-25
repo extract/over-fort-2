@@ -59,7 +59,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.28667676, -1.4777191)
 action_key = ""
 rocket = ExtResource("5_dysw0")
 cooldown = 0.33
-spawnPoint = NodePath("../Nozzle")
+spawnPoint = NodePath(".")
 
 [node name="Body" type="MeshInstance3D" parent="."]
 mesh = SubResource("CapsuleMesh_hweb8")

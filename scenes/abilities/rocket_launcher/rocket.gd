@@ -32,5 +32,8 @@ func _on_timer_timeout() -> void:
 	queue_free()
 
 
-func _on_hit_box_body_entered(body: Node3D) -> void:
+func _on_hit_box_body_entered(_body: Node3D) -> void:
+	explode()
+
+func _on_hit_box_area_entered(_area: Area3D) -> void:
 	explode()
