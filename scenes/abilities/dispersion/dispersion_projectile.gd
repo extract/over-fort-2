@@ -20,6 +20,8 @@ func _on_body_entered(_body: Node3D) -> void:
 		var dir = (b.position - position).normalized()
 		if b is RigidBody3D:
 			(b as RigidBody3D).apply_impulse(dir * explosion_force)
+		if b is CharacterBody3D:
+			(b as CharacterBody3D).velocity += dir * explosion_force
 
 
 func _on_timer_timeout() -> void:
