@@ -10,7 +10,8 @@ var remaining_fly_time = max_fly_time
 @onready var asp: AudioStreamPlayer3D = $AudioStreamPlayer3D
 
 func _physics_process(delta: float) -> void:
-	
+	if !is_multiplayer_authority():
+		return
 	if cb.is_on_floor():
 		remaining_fly_time += delta
 		clamp(remaining_fly_time,0,max_fly_time)

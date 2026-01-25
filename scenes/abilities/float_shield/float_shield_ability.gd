@@ -28,6 +28,8 @@ func doAction():
 	
 
 func _process(delta: float) -> void:
+	if !is_multiplayer_authority():
+		return
 	cooldown_left -= delta
 	
 	if Input.is_action_just_pressed(action_key) and cooldown_left < 0:

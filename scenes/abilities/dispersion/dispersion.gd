@@ -16,6 +16,8 @@ func doAction():
 	get_node("/root").add_child(inst)
 
 func _process(delta: float) -> void:
+	if !is_multiplayer_authority():
+		return
 	remaining_cooldown -= delta
 	
 	if Input.is_action_just_pressed("e") and remaining_cooldown < 0:
