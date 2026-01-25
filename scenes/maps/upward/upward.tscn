@@ -1,6 +1,6 @@
 [gd_scene load_steps=13 format=3 uid="uid://8bv42opaap1m"]
 
-[ext_resource type="PackedScene" uid="uid://bew1il5ffxsac" path="res://scenes/player/local_player.tscn" id="1_2dugv"]
+[ext_resource type="Script" uid="uid://ctl6yljtcbfw5" path="res://scenes/maps/upward/upward.gd" id="1_30rkb"]
 [ext_resource type="PackedScene" uid="uid://dgsrfg1p7easw" path="res://scenes/shapes/dynamic/box.tscn" id="2_o8gkt"]
 [ext_resource type="PackedScene" uid="uid://hty8edbtyqdb" path="res://scenes/shapes/static/floor_100_x_100.tscn" id="3_d1vb7"]
 [ext_resource type="PackedScene" uid="uid://du0ni00nm5poi" path="res://scenes/shapes/static/floor_10x_10.tscn" id="4_x03wj"]
@@ -21,15 +21,13 @@ plane = Plane(0, 0, 1, 0)
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_30rkb"]
 plane = Plane(0, 0, -1, 0)
 
-[node name="Upward" type="Node3D"]
+[node name="Upward" type="Node3D" node_paths=PackedStringArray("SpawnList")]
+script = ExtResource("1_30rkb")
+SpawnList = [NodePath("FFASpawnPoints/Spawn1"), NodePath("FFASpawnPoints/Spawn2"), NodePath("FFASpawnPoints/Spawn3")]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.5465113, 0.83745176, 0, -0.83745176, 0.5465113, 0, 7.6711407, 7.299741)
 light_color = Color(1, 1, 0.8745098, 1)
-
-[node name="LocalPlayer" parent="." instance=ExtResource("1_2dugv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.04636, 13.981501, -11.216406)
-speed = 18.0
 
 [node name="Map" type="Node3D" parent="."]
 
@@ -156,3 +154,17 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 70.82921)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12.536, 4.328)
 shape = SubResource("WorldBoundaryShape3D_30rkb")
 debug_color = Color(0.96862745, 0, 0, 0.41960785)
+
+[node name="FFASpawnPoints" type="Node" parent="."]
+
+[node name="Spawn3" type="Marker3D" parent="FFASpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.294838, 2.5662937, 21.41507)
+gizmo_extents = 1.21
+
+[node name="Spawn2" type="Marker3D" parent="FFASpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42.929432, 2.11529, -71.48626)
+gizmo_extents = 1.21
+
+[node name="Spawn1" type="Marker3D" parent="FFASpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.464716, 10.117576, -35.74313)
+gizmo_extents = 1.21

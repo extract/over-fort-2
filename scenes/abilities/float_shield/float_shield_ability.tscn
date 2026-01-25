@@ -1,8 +1,12 @@
-[gd_scene load_steps=3 format=3 uid="uid://3vpfape4my6u"]
+[gd_scene load_steps=4 format=3 uid="uid://3vpfape4my6u"]
 
 [ext_resource type="Script" uid="uid://ctwoniote23ob" path="res://scenes/abilities/float_shield/float_shield_ability.gd" id="1_1fffe"]
 [ext_resource type="PackedScene" uid="uid://dvbw744qdv2am" path="res://scenes/abilities/float_shield/float_shield.tscn" id="2_3qoo0"]
+[ext_resource type="AudioStream" uid="uid://dnxtqyxeltag8" path="res://scenes/abilities/float_shield/shield_deploy.mp3" id="3_7drjf"]
 
 [node name="FloatShieldAbility" type="Node3D"]
 script = ExtResource("1_1fffe")
 float_shield = ExtResource("2_3qoo0")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("3_7drjf")
