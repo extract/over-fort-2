@@ -7,6 +7,7 @@ extends Node3D
 @export var cooldown = 2
 var remaining_cooldown = 0
 
+@rpc("any_peer", "call_local", "reliable")
 func doAction():
 	$AudioStreamPlayer3D.play()
 	remaining_cooldown = cooldown
@@ -18,4 +19,4 @@ func _process(delta: float) -> void:
 	remaining_cooldown -= delta
 	
 	if Input.is_action_just_pressed("e") and remaining_cooldown < 0:
-		doAction()
+		doAction.rpc()

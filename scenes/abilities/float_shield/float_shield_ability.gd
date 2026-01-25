@@ -12,6 +12,7 @@ var is_shield_active = false
 
 @onready var asp: AudioStreamPlayer3D = $AudioStreamPlayer3D
 
+@rpc("any_peer", "call_local", "reliable")
 func doAction():
 	asp.play()
 	cooldown_left = cooldown
@@ -30,7 +31,7 @@ func _process(delta: float) -> void:
 	cooldown_left -= delta
 	
 	if Input.is_action_just_pressed(action_key) and cooldown_left < 0:
-		doAction()
+		doAction.rpc()
 	
 	if is_shield_active and Input.is_action_pressed(action_key):
 			inst.position -= inst.transform.basis.z * shield_speed * delta
