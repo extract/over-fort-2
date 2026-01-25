@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cdekt81cskj8h" path="res://scenes/menu/connect.gd" id="1_klgdb"]
 [ext_resource type="Script" uid="uid://bwak73dko45bd" path="res://scenes/menu/host.gd" id="2_mcvr8"]
-[ext_resource type="PackedScene" uid="uid://cyjfreye6e0em" path="res://scenes/maps/test_map/test_map.tscn" id="3_e0arn"]
+[ext_resource type="PackedScene" uid="uid://8bv42opaap1m" path="res://scenes/maps/upward/upward.tscn" id="4_3y2rt"]
 [ext_resource type="PackedScene" uid="uid://bew1il5ffxsac" path="res://scenes/player/local_player.tscn" id="5_3y2rt"]
 [ext_resource type="PackedScene" uid="uid://dsqddxnd6obw" path="res://scenes/maps/lobby/lobby.tscn" id="5_y1o0p"]
 [ext_resource type="Script" uid="uid://d0nninkwx7pfu" path="res://scenes/menu/multiplayer.gd" id="6_r8yej"]
@@ -56,7 +56,7 @@ script = ExtResource("2_mcvr8")
 
 [node name="MultiplayerSetup" type="Node" parent="."]
 script = ExtResource("6_r8yej")
-startMap = ExtResource("3_e0arn")
+startMap = ExtResource("4_3y2rt")
 playerScene = ExtResource("5_3y2rt")
 lobbyScene = ExtResource("5_y1o0p")
 gameScene = ExtResource("7_3y2rt")
