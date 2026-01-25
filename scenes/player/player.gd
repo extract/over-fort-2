@@ -14,7 +14,6 @@ func _set_my_id(_my_id):
 	my_id = _my_id
 	print("setting %s" % _my_id)
 
-@export var mouse_sensitivity = 0.01
 var spawn_point : Vector3
 
 @rpc("authority", "call_local", "reliable")
