@@ -3,17 +3,13 @@
 [ext_resource type="PackedScene" uid="uid://dgsrfg1p7easw" path="res://scenes/shapes/dynamic/box.tscn" id="1_2es1a"]
 [ext_resource type="PackedScene" uid="uid://hty8edbtyqdb" path="res://scenes/shapes/static/floor_100_x_100.tscn" id="2_tc2xj"]
 [ext_resource type="PackedScene" uid="uid://du0ni00nm5poi" path="res://scenes/shapes/static/floor_10x_10.tscn" id="3_v82ge"]
-[ext_resource type="PackedScene" uid="uid://bew1il5ffxsac" path="res://scenes/player/local_player.tscn" id="4_u1u77"]
+[ext_resource type="PackedScene" uid="uid://bxdarsgf1fjfj" path="res://scenes/player/green_player.tscn" id="4_2es1a"]
 
 [node name="LocalTestMap" type="Node"]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.5465113, 0.83745176, 0, -0.83745176, 0.5465113, 0, 7.6711407, 7.299741)
 light_color = Color(1, 1, 0.8745098, 1)
-
-[node name="LocalPlayer" parent="." instance=ExtResource("4_u1u77")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.4430141, 0)
-speed = 18.0
 
 [node name="Bunch of boxes" type="Node" parent="."]
 
@@ -47,3 +43,6 @@ transform = Transform3D(0.25584882, 0.44314346, -0.85916543, 0.42958266, 0.74405
 
 [node name="Floor10x11" parent="Map" instance=ExtResource("3_v82ge")]
 transform = Transform3D(-5.732056e-15, 4.371139e-08, 1, 1, 1.3113416e-07, 0, -1.3113416e-07, 1, -4.371139e-08, -9.982986, 4.9829865, 15.916735)
+
+[node name="GreenPlayer" parent="." instance=ExtResource("4_2es1a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.9085972, 0)

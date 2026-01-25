@@ -1,6 +1,11 @@
 extends Node3D
 
+
+
 func _process(_delta):
+	func_body(_delta)
+
+func func_body(_delta):
 	var closest_player = get_closest_player()
 	
 	if closest_player:
