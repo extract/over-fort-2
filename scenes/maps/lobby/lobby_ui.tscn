@@ -38,10 +38,10 @@ horizontal_alignment = 1
 
 [node name="ReadyStartButton" type="Button" parent="Control"]
 layout_mode = 0
-offset_left = 301.0
-offset_top = 568.0
-offset_right = 836.0
-offset_bottom = 646.0
+offset_left = 307.0
+offset_top = 498.0
+offset_right = 842.0
+offset_bottom = 576.0
 text = "READY"
 script = ExtResource("1_1uroi")
 
