@@ -28,6 +28,7 @@ func _activate_camera():
 
 @rpc("authority", "call_local", "reliable")
 func set_authority(player_id_):
+	print("set authority from server to idx: ", player_id_, " on ", multiplayer.get_unique_id())
 	player_id = player_id_
 	set_multiplayer_authority(player_id_)
 	$MultiplayerSynchronizer.set_multiplayer_authority(player_id_)
@@ -50,7 +51,6 @@ var authority_set : bool = false
 func _physics_process(delta: float) -> void:
 	if !is_multiplayer_authority() and multiplayer.is_server() and !authority_set:
 		get_node("/root/Game").request_authority(player_id)
-		print("spam me baby")
 		authority_set = true
 		return
 	# Add the gravity.
