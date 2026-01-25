@@ -4,7 +4,6 @@ extends Node
 @export var playerScene : PackedScene
 @export var lobbyScene : PackedScene
 @export var gameScene : PackedScene
-@onready var networkNode = $"../Network"
 @onready var menuNode = (($"../Menu") as Control)
 @onready var lobbyInstance
 const MAX_CLIENTS = 8
@@ -113,7 +112,8 @@ func start_the_game() -> void:
 	multiplayer.multiplayer_peer.set_refuse_new_connections(true) ## TODO DIDNT WORK
 	lobbyInstance.hide_ui()
 	lobbyInstance.visible = false
-	load_game.rpc("res://scenes/game/Game.tscn")
+	if multiplayer.is_server():
+		load_game.rpc("res://scenes/game/Game.tscn")
 	pass
 
 @rpc("any_peer", "call_local", "reliable")
@@ -125,7 +125,7 @@ func player_loaded():
 			$/root/Game.start_game()
 			players_loaded = 0
 
-@rpc("call_local", "reliable")
+@rpc("authority", "call_local", "reliable")
 func load_game(game_scene_path):
 	var gameInstance = gameScene.instantiate()
 	gameInstance.set_map(startMap)

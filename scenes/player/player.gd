@@ -6,6 +6,28 @@ extends CharacterBody3D
 
 @export var mouse_sensitivity = 0.01
 @export var team = 1
+var my_id : int;
+
+@rpc("authority", "call_local", "reliable")
+func _set_my_id(_my_id):
+	#set_multiplayer_authority(_my_id)
+	my_id = _my_id
+	print("setting %s" % _my_id)
+
+@export var mouse_sensitivity = 0.01
+var spawn_point : Vector3
+
+@rpc("authority", "call_local", "reliable")
+func _set_global_position(newGlobalPos):
+	global_transform.origin = newGlobalPos
+	
+@rpc("authority", "call_local", "reliable")
+func _set_spawn_point(newGlobalPos):
+	spawn_point = newGlobalPos
+	
+@rpc("authority", "call_local", "reliable")
+func _activate_camera():
+	$Camera3D.make_current()
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
@@ -15,7 +37,9 @@ func _unhandled_input(event: InputEvent) -> void:
 		get_tree().quit()
 
 func _physics_process(delta: float) -> void:
-	
+	if !is_multiplayer_authority():
+		print("should not happen!")
+		return
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta

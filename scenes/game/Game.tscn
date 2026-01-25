@@ -6,3 +6,9 @@
 [node name="Game" type="Node3D"]
 script = ExtResource("1_klkup")
 defaultPlayerScene = ExtResource("2_m44fu")
+
+[node name="Network" type="Node3D" parent="."]
+
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
+_spawnable_scenes = PackedStringArray("uid://dn6ln2qk6dbtr")
+spawn_path = NodePath("../Network")

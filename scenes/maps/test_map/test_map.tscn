@@ -5,8 +5,9 @@
 [ext_resource type="PackedScene" uid="uid://hty8edbtyqdb" path="res://scenes/shapes/static/floor_100_x_100.tscn" id="3_38prr"]
 [ext_resource type="PackedScene" uid="uid://dgsrfg1p7easw" path="res://scenes/shapes/dynamic/box.tscn" id="3_o3n0h"]
 
-[node name="TestMap" type="Node"]
+[node name="TestMap" type="Node" node_paths=PackedStringArray("SpawnList")]
 script = ExtResource("1_vki1u")
+SpawnList = [NodePath("Spawn1"), NodePath("Spawn2"), NodePath("Spawn3")]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.5465113, 0.83745176, 0, -0.83745176, 0.5465113, 0, 7.6711407, 7.299741)

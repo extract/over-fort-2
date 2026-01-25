@@ -4,6 +4,7 @@ var packedScene : PackedScene
 @export var defaultPlayerScene : PackedScene
 var players = {}
 var heroPlayers = {}
+var mapInstance;
 
 func set_map(packedScene_):
 	packedScene = packedScene_
@@ -11,26 +12,49 @@ func set_map(packedScene_):
 func set_players(players_):
 	players = players_
 
+func create_players(players_):
+	#$MultiplayerSpawner.spawn_function = spawn_player
+	for idx in players:
+		var hero = spawn_player(idx)
+		hero._activate_camera.rpc_id(idx)
+
+func spawn_player(idx) -> Node:
+	#var heroName = players[idx].get("hero")
+	var hero = null
+	#if heroName == "default":
+	hero = defaultPlayerScene.instantiate()
+	hero.name = "player_" + str(idx)
+	hero.set_multiplayer_authority(idx)
+	$Network.add_child(hero)
+	
+	heroPlayers[idx] = hero
+	return hero
+
 func _ready():
 	# Preconfigure game.
 	print_debug("ready")
-	var mapInstance = packedScene.instantiate()
+	mapInstance = packedScene.instantiate()
 	get_node("/root/Game").add_child(mapInstance)
+	
+	
 	get_node("/root/Menu/MultiplayerSetup").player_loaded.rpc_id(1) # Tell the server that this peer has loaded.
 	
-	mapInstance.consume_next_spawn_point()
-	for idx in players:
-		var heroName = players[idx].get("hero")
-		var hero = null
-		if heroName == "default":
-			hero = defaultPlayerScene.instantiate()
-		heroPlayers.set(players[idx], hero)
-	#for idx in heroPlayers:
-		#heroPlayers.get(idx).global_transform.origin = mapInstance.consume_next_spawn_point().get_global_position()
+	print("_ready...")
 	
-
 # Called only on the server.
 func start_game():
 	print_debug("start_game")
+	var i = 0
+	create_players(players)
+	for idx in players:
+		var hero = heroPlayers[idx]
+		var spawnPoint = mapInstance.quick_func_thing(i).get_global_position()
+		hero._set_spawn_point.rpc(spawnPoint)
+		hero._set_global_position.rpc(spawnPoint)
+		#hero._set_my_id.rpc(idx)
+		
+		#hero._activate_camera.rpc_id(idx)
+		i += 1
+	
 	pass
 	# All peers are ready to receive RPCs in this scene.
