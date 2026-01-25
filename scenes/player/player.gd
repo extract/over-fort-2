@@ -6,13 +6,11 @@ extends CharacterBody3D
 
 @export var mouse_sensitivity = 0.01
 @export var team = 1
-var my_id : int;
 
-@rpc("authority", "call_local", "reliable")
-func _set_my_id(_my_id):
-	#set_multiplayer_authority(_my_id)
-	my_id = _my_id
-	print("setting %s" % _my_id)
+@export var player_id := 1:
+	set(id):
+		player_id = id
+		set_multiplayer_authority(id)
 
 var spawn_point : Vector3
 
@@ -28,16 +26,25 @@ func _set_spawn_point(newGlobalPos):
 func _activate_camera():
 	$Camera3D.make_current()
 
+@rpc("authority", "call_local", "reliable")
+func set_authority(player_id_):
+	player_id = player_id_
+	set_multiplayer_authority(player_id_)
+	$MultiplayerSynchronizer.set_multiplayer_authority(player_id_)
+
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
 		rotate_y(-event.relative.x * mouse_sensitivity)
 
 	if event.is_action_pressed("ui_cancel"):
 		get_tree().quit()
+var authority_set : bool = false 
 
 func _physics_process(delta: float) -> void:
-	if !is_multiplayer_authority():
-		print("should not happen!")
+	if !is_multiplayer_authority() and multiplayer.is_server() and !authority_set:
+		get_node("/root/Game").request_authority(player_id)
+		print("spam me baby")
+		authority_set = true
 		return
 	# Add the gravity.
 	if not is_on_floor():
