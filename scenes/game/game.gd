@@ -42,6 +42,7 @@ func _enter_tree():
 @rpc("any_peer", "call_local", "reliable")
 func request_authority(idx):
 	if multiplayer.is_server():
+		print("trying to set authority from server to idx: %s" % idx)
 		heroPlayers[idx].set_authority.rpc_id(idx, idx)
 
 # Called only on the server.
