@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://capis0p76uoxd"]
 
-[ext_resource type="Script" uid="uid://c5otu0rdfbuf4" path="res://scenes/maps/lobby/player_count_update.gd" id="1_1uroi"]
+[ext_resource type="Script" uid="uid://di13wx2vc4uo2" path="res://scenes/maps/lobby/lobby_ready.gd" id="1_1uroi"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_linbj"]
 font_size = 81
@@ -18,7 +18,7 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="Label" type="Label" parent="Control"]
+[node name="WaitingLabel" type="Label" parent="Control"]
 layout_mode = 0
 offset_right = 1153.0
 offset_bottom = 132.0
@@ -26,13 +26,23 @@ text = "Waiting for other players"
 label_settings = SubResource("LabelSettings_linbj")
 horizontal_alignment = 1
 
-[node name="Label2" type="Label" parent="Control"]
+[node name="NumberReady" type="Label" parent="Control"]
 layout_mode = 0
 offset_left = 1.0
 offset_top = 116.0
 offset_right = 1154.0
 offset_bottom = 248.0
-text = "(N/3) connected"
+text = "(N/3) ready"
 label_settings = SubResource("LabelSettings_linbj")
 horizontal_alignment = 1
+
+[node name="ReadyStartButton" type="Button" parent="Control"]
+layout_mode = 0
+offset_left = 301.0
+offset_top = 568.0
+offset_right = 836.0
+offset_bottom = 646.0
+text = "READY"
 script = ExtResource("1_1uroi")
+
+[connection signal="pressed" from="Control/ReadyStartButton" to="Control/ReadyStartButton" method="_on_pressed"]

@@ -1,12 +1,16 @@
-[gd_scene load_steps=6 format=3 uid="uid://cho0rrlnqk2wt"]
+[gd_scene load_steps=9 format=3 uid="uid://cho0rrlnqk2wt"]
 
 [ext_resource type="Script" uid="uid://cdekt81cskj8h" path="res://scenes/menu/connect.gd" id="1_klgdb"]
 [ext_resource type="Script" uid="uid://bwak73dko45bd" path="res://scenes/menu/host.gd" id="2_mcvr8"]
 [ext_resource type="PackedScene" uid="uid://cyjfreye6e0em" path="res://scenes/maps/test_map/test_map.tscn" id="3_e0arn"]
 [ext_resource type="PackedScene" uid="uid://dn6ln2qk6dbtr" path="res://scenes/player/player.tscn" id="4_037ec"]
 [ext_resource type="PackedScene" uid="uid://dsqddxnd6obw" path="res://scenes/maps/lobby/lobby.tscn" id="5_y1o0p"]
+[ext_resource type="Script" uid="uid://d0nninkwx7pfu" path="res://scenes/menu/multiplayer.gd" id="6_r8yej"]
+[ext_resource type="PackedScene" uid="uid://e217n2rh1722" path="res://scenes/game/Game.tscn" id="7_3y2rt"]
 
-[node name="Node3D" type="Node3D"]
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_r8yej"]
+
+[node name="Menu" type="Node3D"]
 
 [node name="Network" type="Node" parent="."]
 
@@ -29,7 +33,6 @@ offset_right = 564.0
 offset_bottom = 41.0
 text = "CONNECT"
 script = ExtResource("1_klgdb")
-lobbyScene = ExtResource("5_y1o0p")
 
 [node name="LineEdit" type="LineEdit" parent="Menu/Client"]
 layout_mode = 0
@@ -52,13 +55,22 @@ offset_right = 680.0
 offset_bottom = 100.0
 text = "HOST (PORT 21057)"
 script = ExtResource("2_mcvr8")
-startMap = ExtResource("3_e0arn")
-playerScene = ExtResource("4_037ec")
-lobbyScene = ExtResource("5_y1o0p")
 
 [node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
 _spawnable_scenes = PackedStringArray("uid://dn6ln2qk6dbtr", "uid://cyjfreye6e0em")
 spawn_path = NodePath("../Network")
+
+[node name="MultiplayerSetup" type="Node" parent="."]
+script = ExtResource("6_r8yej")
+startMap = ExtResource("3_e0arn")
+playerScene = ExtResource("4_037ec")
+lobbyScene = ExtResource("5_y1o0p")
+gameScene = ExtResource("7_3y2rt")
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="MultiplayerSetup"]
+replication_config = SubResource("SceneReplicationConfig_r8yej")
+
+[node name="Node" type="Node" parent="."]
 
 [connection signal="pressed" from="Menu/Client/Button" to="Menu/Client/Button" method="_on_pressed"]
 [connection signal="pressed" from="Menu/Server/Button" to="Menu/Server/Button" method="_on_pressed"]
