@@ -10,7 +10,10 @@ var cooldown_left = 0
 var is_shield_active = false
 @export var shield_speed = 4
 
+@onready var asp: AudioStreamPlayer3D = $AudioStreamPlayer3D
+
 func doAction():
+	asp.play()
 	cooldown_left = cooldown
 	
 	if is_shield_active:

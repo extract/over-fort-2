@@ -1,4 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://dvbw744qdv2am"]
+[gd_scene load_steps=5 format=3 uid="uid://dvbw744qdv2am"]
+
+[ext_resource type="AudioStream" uid="uid://dfmnbvgnu83d3" path="res://scenes/abilities/float_shield/sheild_loop.mp3" id="1_a1dse"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_d5ytt"]
 size = Vector3(3, 2, 0.1)
@@ -19,3 +21,7 @@ shape = SubResource("BoxShape3D_d5ytt")
 transform = Transform3D(3, 0, 0, 0, 2, 0, 0, 0, 0.1, 0, 0, 0)
 mesh = SubResource("BoxMesh_dgaw8")
 skeleton = NodePath("../..")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("1_a1dse")
+autoplay = true
