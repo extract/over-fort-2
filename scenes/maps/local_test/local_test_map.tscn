@@ -1,26 +1,16 @@
-[gd_scene load_steps=5 format=3 uid="uid://dqhhnv08q6fe6"]
+[gd_scene load_steps=6 format=3 uid="uid://dqhhnv08q6fe6"]
 
 [ext_resource type="PackedScene" uid="uid://dgsrfg1p7easw" path="res://scenes/shapes/dynamic/box.tscn" id="1_2es1a"]
 [ext_resource type="PackedScene" uid="uid://hty8edbtyqdb" path="res://scenes/shapes/static/floor_100_x_100.tscn" id="2_tc2xj"]
 [ext_resource type="PackedScene" uid="uid://du0ni00nm5poi" path="res://scenes/shapes/static/floor_10x_10.tscn" id="3_v82ge"]
 [ext_resource type="PackedScene" uid="uid://ct6dcr7qtsamo" path="res://scenes/player/local_player.tscn" id="4_u1u77"]
+[ext_resource type="PackedScene" uid="uid://lr7clttuxi0j" path="res://scenes/abilities/turret/turret.tscn" id="5_tc2xj"]
 
 [node name="LocalTestMap" type="Node"]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.5465113, 0.83745176, 0, -0.83745176, 0.5465113, 0, 7.6711407, 7.299741)
 light_color = Color(1, 1, 0.8745098, 1)
-
-[node name="Floor100x100" parent="." instance=ExtResource("2_tc2xj")]
-
-[node name="Floor10x10" parent="." instance=ExtResource("3_v82ge")]
-transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, -14.982987, 5, 10.458367)
-
-[node name="Floor10x12" parent="." instance=ExtResource("3_v82ge")]
-transform = Transform3D(0.25584882, 0.44314346, -0.85916543, 0.42958266, 0.7440591, 0.51169795, 0.86602545, -0.4999999, -9.170982e-08, -12.537475, 5.7427588, 10.093729)
-
-[node name="Floor10x11" parent="." instance=ExtResource("3_v82ge")]
-transform = Transform3D(-5.732056e-15, 4.371139e-08, 1, 1, 1.3113416e-07, 0, -1.3113416e-07, 1, -4.371139e-08, -9.982986, 4.9829865, 15.916735)
 
 [node name="LocalPlayer" parent="." instance=ExtResource("4_u1u77")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.4430141, 0)
@@ -45,3 +35,19 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.7478743, 2.8200998, -3.2461
 
 [node name="Box4" parent="Bunch of boxes" instance=ExtResource("1_2es1a")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3116567, 4.0144024, -3.2461233)
+
+[node name="Map" type="Node3D" parent="."]
+
+[node name="Floor100x100" parent="Map" instance=ExtResource("2_tc2xj")]
+
+[node name="Floor10x10" parent="Map" instance=ExtResource("3_v82ge")]
+transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, -14.982987, 5, 10.458367)
+
+[node name="Floor10x12" parent="Map" instance=ExtResource("3_v82ge")]
+transform = Transform3D(0.25584882, 0.44314346, -0.85916543, 0.42958266, 0.7440591, 0.51169795, 0.86602545, -0.4999999, -9.170982e-08, -12.537475, 5.7427588, 10.093729)
+
+[node name="Floor10x11" parent="Map" instance=ExtResource("3_v82ge")]
+transform = Transform3D(-5.732056e-15, 4.371139e-08, 1, 1, 1.3113416e-07, 0, -1.3113416e-07, 1, -4.371139e-08, -9.982986, 4.9829865, 15.916735)
+
+[node name="TurretBody" parent="." instance=ExtResource("5_tc2xj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, -8.578)
