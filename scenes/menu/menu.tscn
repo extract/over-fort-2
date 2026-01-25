@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://8bv42opaap1m" path="res://scenes/maps/upward/upward.tscn" id="4_3y2rt"]
 [ext_resource type="PackedScene" uid="uid://bew1il5ffxsac" path="res://scenes/player/local_player.tscn" id="5_3y2rt"]
 [ext_resource type="PackedScene" uid="uid://dsqddxnd6obw" path="res://scenes/maps/lobby/lobby.tscn" id="5_y1o0p"]
-[ext_resource type="Script" uid="uid://d0nninkwx7pfu" path="res://scenes/menu/multiplayer.gd" id="6_r8yej"]
+[ext_resource type="Script" path="res://scenes/menu/multiplayer.gd" id="6_r8yej"]
 [ext_resource type="PackedScene" uid="uid://e217n2rh1722" path="res://scenes/game/Game.tscn" id="7_3y2rt"]
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_r8yej"]

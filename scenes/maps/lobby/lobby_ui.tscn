@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://capis0p76uoxd"]
 
-[ext_resource type="Script" uid="uid://di13wx2vc4uo2" path="res://scenes/maps/lobby/lobby_ready.gd" id="1_1uroi"]
+[ext_resource type="Script" path="res://scenes/maps/lobby/lobby_ready.gd" id="1_1uroi"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_linbj"]
 font_size = 81
