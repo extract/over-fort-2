@@ -1,0 +1,70 @@
+[gd_scene load_steps=13 format=3 uid="uid://lr7clttuxi0j"]
+
+[ext_resource type="Script" uid="uid://db6evfjhqegq7" path="res://scenes/abilities/turret/look_at.gd" id="1_cy0hd"]
+[ext_resource type="PackedScene" uid="uid://y36k7rxn4fpp" path="res://scenes/abilities/rocket_launcher/rocket_launcher.tscn" id="1_tgr5u"]
+[ext_resource type="PackedScene" uid="uid://bfltw7hpq6tcj" path="res://scripts/gameplay/kill_parent.tscn" id="2_63av1"]
+[ext_resource type="Script" uid="uid://d1rjw7nsb1ymd" path="res://scripts/gameplay/hurtbox.gd" id="2_g55dw"]
+[ext_resource type="Script" uid="uid://55mvtmp82ky7" path="res://scripts/gameplay/health_component.gd" id="3_dysw0"]
+[ext_resource type="PackedScene" uid="uid://bhpr2se8bv5ba" path="res://scenes/abilities/rocket_launcher/bullet.tscn" id="5_dysw0"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_h0q0r"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dysw0"]
+albedo_color = Color(1, 0, 0, 1)
+metallic = 0.28
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_1lxpc"]
+material = SubResource("StandardMaterial3D_dysw0")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cy0hd"]
+albedo_color = Color(0.42745098, 0.08235294, 0, 1)
+metallic_specular = 0.48
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_3o5t5"]
+material = SubResource("StandardMaterial3D_cy0hd")
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_hweb8"]
+
+[node name="TurretBody" type="Node3D"]
+script = ExtResource("1_cy0hd")
+
+[node name="KillParent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("2_63av1")]
+health_component = NodePath("../Hurtbox/Hitpoints")
+
+[node name="Hurtbox" type="Area3D" parent="." node_paths=PackedStringArray("health_component")]
+script = ExtResource("2_g55dw")
+health_component = NodePath("Hitpoints")
+
+[node name="Hitpoints" type="Node" parent="Hurtbox"]
+script = ExtResource("3_dysw0")
+max_health = 166.6
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hurtbox"]
+shape = SubResource("CapsuleShape3D_h0q0r")
+
+[node name="Barrel and Nozzle" type="Node3D" parent="."]
+
+[node name="Barrel" type="MeshInstance3D" parent="Barrel and Nozzle"]
+transform = Transform3D(0.2, 0, 0, 0, -2.1855694e-08, 0.2, 0, -0.5, -8.742278e-09, 0, 0.31283283, -0.92205155)
+mesh = SubResource("CylinderMesh_1lxpc")
+skeleton = NodePath("../..")
+
+[node name="Nozzle" type="MeshInstance3D" parent="Barrel and Nozzle"]
+transform = Transform3D(0.3, 0, 0, 0, -4.371139e-09, 0.3, 0, -0.1, -1.3113417e-08, 0, 0.31283283, -1.5027369)
+mesh = SubResource("CylinderMesh_3o5t5")
+skeleton = NodePath("../..")
+
+[node name="RocketLauncher" parent="Barrel and Nozzle" node_paths=PackedStringArray("spawnPoint") instance=ExtResource("1_tgr5u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.28667676, -1.4777191)
+action_key = ""
+rocket = ExtResource("5_dysw0")
+cooldown = 0.33
+spawnPoint = NodePath("../Nozzle")
+
+[node name="Body" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_hweb8")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("CapsuleShape3D_h0q0r")

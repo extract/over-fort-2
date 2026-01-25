@@ -1,6 +1,5 @@
 extends Node3D
 
-
 @export var speed = 10
 @export var lifetime = 10
 
