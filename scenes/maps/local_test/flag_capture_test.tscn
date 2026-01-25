@@ -1,0 +1,37 @@
+[gd_scene load_steps=7 format=3 uid="uid://bypvptwlcgfgj"]
+
+[ext_resource type="PackedScene" uid="uid://hty8edbtyqdb" path="res://scenes/shapes/static/floor_100_x_100.tscn" id="1_ljxhn"]
+[ext_resource type="Script" uid="uid://dgg0p7ystuedc" path="res://scenes/maps/local_test/capture_zone.gd" id="2_370uc"]
+[ext_resource type="PackedScene" uid="uid://ct6dcr7qtsamo" path="res://scenes/player/local_player.tscn" id="3_370uc"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ysqfo"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ysqfo"]
+transparency = 1
+albedo_color = Color(1, 0.09411765, 0.40392157, 0.28235295)
+
+[sub_resource type="BoxMesh" id="BoxMesh_02t57"]
+material = SubResource("StandardMaterial3D_ysqfo")
+
+[node name="FlagCaptureTest" type="Node3D"]
+
+[node name="Floor100x100" parent="." instance=ExtResource("1_ljxhn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.45866, 0)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.8886732, 0.4585409, 0, -0.4585409, 0.8886732, 0, 1.2804037, 0)
+
+[node name="CaptureZone" type="Area3D" parent="."]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, -18.64015)
+script = ExtResource("2_370uc")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CaptureZone"]
+shape = SubResource("BoxShape3D_ysqfo")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CaptureZone"]
+mesh = SubResource("BoxMesh_02t57")
+
+[node name="LocalPlayer" parent="." instance=ExtResource("3_370uc")]
+
+[connection signal="body_entered" from="CaptureZone" to="CaptureZone" method="_on_body_entered"]
+[connection signal="body_exited" from="CaptureZone" to="CaptureZone" method="_on_body_exited"]

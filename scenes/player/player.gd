@@ -5,7 +5,7 @@ extends CharacterBody3D
 @export var jump_velocity = 4.5
 
 @export var mouse_sensitivity = 0.01
-
+@export var team = 1
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
