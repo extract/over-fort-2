@@ -216,16 +216,54 @@ transform = Transform3D(0.25584882, 0.44314346, -0.85916543, 0.42958266, 0.74405
 [node name="Floor10x11" parent="Map/Broken Platform2" instance=ExtResource("4_x03wj")]
 transform = Transform3D(-5.732056e-15, 4.371139e-08, 1, 1, 1.3113416e-07, 0, -1.3113416e-07, 1, -4.371139e-08, -9.982986, 4.9829865, 15.916735)
 
+[node name="Bushes" type="Node3D" parent="Map"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 70.64701, 0, -71.69527)
+
+[node name="FallTree4" parent="Map/Bushes" instance=ExtResource("6_o8gkt")]
+transform = Transform3D(3.3, 0, 0, 0, 2.4875226, 0, 0, 0, 2.2369204, -31.041248, 0.8192234, 0)
+
+[node name="FallTree5" parent="Map/Bushes" instance=ExtResource("6_o8gkt")]
+transform = Transform3D(1.8977059, 0, -1.8300459, 0, 2.4875224, 0, 2.6997614, 0, 1.2863686, -31.041248, 0.8192234, 7.312357)
+
+[node name="FallTree6" parent="Map/Bushes" instance=ExtResource("6_o8gkt")]
+transform = Transform3D(1.8977059, 0, -1.8300459, 0, 2.4875224, 0, 2.6997614, 0, 1.2863686, -20.380577, 0.8192234, 3.5148773)
+
+[node name="FallTree7" parent="Map/Bushes" instance=ExtResource("6_o8gkt")]
+transform = Transform3D(2.0851374, 0, -1.9570973, 0, 2.7878318, 0, 2.96641, 0, 1.3756751, -24.149746, 0.8192234, 12.050179)
+
 [node name="FFASpawnPoints" type="Node" parent="."]
 
 [node name="Spawn3" type="Marker3D" parent="FFASpawnPoints"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.294838, 2.5662937, 21.41507)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.58963, 2.5662937, 14.221167)
 gizmo_extents = 1.21
 
 [node name="Spawn2" type="Marker3D" parent="FFASpawnPoints"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42.929432, 2.11529, -71.48626)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34.496853, 2.11529, 45.057426)
 gizmo_extents = 1.21
 
 [node name="Spawn1" type="Marker3D" parent="FFASpawnPoints"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.464716, 10.117576, -35.74313)
 gizmo_extents = 1.21
+
+[node name="House" parent="." instance=ExtResource("7_d1vb7")]
+transform = Transform3D(-0.30259138, 0, -0.39804327, 0, 0.5, 0, 0.39804327, 0, -0.30259138, -72.001205, 8.149208, -76.88426)
+
+[node name="FloorRectangle" parent="House" instance=ExtResource("8_x03wj")]
+transform = Transform3D(4.112929, 0, -2.5455668, 0, 2, 0, 1.9439969, 0, 5.385675, 1.5919647, -0.20831871, -8.709974)
+
+[node name="RoadToFloor" type="Node3D" parent="House"]
+
+[node name="Step" parent="House/RoadToFloor" instance=ExtResource("8_x03wj")]
+transform = Transform3D(0.88545054, 0, -0.46473396, 0, 1, 0, 0.46473396, 0, 0.88545054, -8.05294, 0, -45.94819)
+
+[node name="Step2" parent="House/RoadToFloor" instance=ExtResource("8_x03wj")]
+transform = Transform3D(0.99859965, 0, -1.8996265, 0, 1.5267377, 0, 1.4467962, 0, 1.3111496, -12.227924, -1.7112923, -53.042442)
+
+[node name="Step3" parent="House/RoadToFloor" instance=ExtResource("8_x03wj")]
+transform = Transform3D(0.0013897419, 0, -2.1461086, 0, 1.5267377, 0, 1.8904022, 0, 0.4885828, -28.452728, -5.110943, -52.995148)
+
+[node name="Step4" parent="House/RoadToFloor" instance=ExtResource("8_x03wj")]
+transform = Transform3D(0.0009887218, 0, -1.8872695, 0, 1.5267377, 0, 1.3449721, 0, 0.4296552, -28.457085, -8.803864, -65.81002)
+
+[node name="Step5" parent="House/RoadToFloor" instance=ExtResource("8_x03wj")]
+transform = Transform3D(0.0009887218, 0, -1.8872695, 0, 1.5267377, 0, 1.3449721, 0, 0.4296552, -42.15954, -11.79994, -53.69493)
