@@ -7,15 +7,17 @@ extends Node3D
 @export var spawnPoint : Node3D
 var cooldown_left=0
 
+@onready var asp: AudioStreamPlayer3D = $AudioStreamPlayer3D
+
 func doAbility():
+	asp.play()
+	
 	cooldown_left = cooldown
 	var inst: Node3D = rocket.instantiate()
-	if null != get_node_or_null("Crosshair"):
-		inst.transform = %Crosshair.global_transform
-	else:
-		inst.transform = get_parent().global_transform
-		if spawnPoint != null:
-			inst.position = spawnPoint.global_position
+	
+	inst.transform = get_parent().global_transform
+	if spawnPoint != null:
+		inst.transform = spawnPoint.global_transform
 	get_node("/root").add_child(inst)
 	
 

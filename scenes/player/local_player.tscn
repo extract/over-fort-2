@@ -35,13 +35,14 @@ script = ExtResource("2_okac2")
 
 [node name="Crosshair" type="Node3D" parent="Camera3D"]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.1099447)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.28777575, -4.3099265)
 
 [node name="Face" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.42697042, -0.15429068)
 mesh = SubResource("SphereMesh_dovo2")
 
-[node name="RocketLauncher" parent="." instance=ExtResource("3_cv68x")]
+[node name="RocketLauncher" parent="." node_paths=PackedStringArray("spawnPoint") instance=ExtResource("3_cv68x")]
+spawnPoint = NodePath("../Camera3D/Crosshair")
 
 [node name="Hurtbox" type="Area3D" parent="." node_paths=PackedStringArray("health_component")]
 script = ExtResource("2_cv68x")
