@@ -9,6 +9,7 @@ var cooldown_left=0
 
 @onready var asp: AudioStreamPlayer3D = $AudioStreamPlayer3D
 
+@rpc("any_peer", "call_local", "reliable")
 func doAbility():
 	asp.play()
 	
@@ -23,9 +24,12 @@ func doAbility():
 
 
 func _process(delta: float) -> void:
+	if !is_multiplayer_authority():
+		return
+		
 	cooldown_left -= delta
 	if action_key == "":
 		if cooldown_left < 0:
-			doAbility()
+			doAbility.rpc()
 	elif Input.is_action_pressed(action_key) and cooldown_left < 0:
-		doAbility()
+		doAbility.rpc()

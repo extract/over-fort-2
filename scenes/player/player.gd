@@ -32,6 +32,13 @@ func set_authority(player_id_):
 	set_multiplayer_authority(player_id_)
 	$MultiplayerSynchronizer.set_multiplayer_authority(player_id_)
 
+@export var health_component: HealthComponent 
+
+func get_health() -> float:
+	if health_component == null:
+		return 0
+	return health_component.current_health
+
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
 		rotate_y(-event.relative.x * mouse_sensitivity)

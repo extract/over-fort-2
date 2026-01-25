@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://e217n2rh1722"]
 
 [ext_resource type="Script" uid="uid://bkasnarjkd4rq" path="res://scenes/game/game.gd" id="1_klkup"]
-[ext_resource type="PackedScene" uid="uid://dn6ln2qk6dbtr" path="res://scenes/player/player.tscn" id="2_m44fu"]
+[ext_resource type="PackedScene" uid="uid://bew1il5ffxsac" path="res://scenes/player/local_player.tscn" id="2_m44fu"]
 
 [node name="Game" type="Node3D"]
 script = ExtResource("1_klkup")
@@ -10,5 +10,5 @@ defaultPlayerScene = ExtResource("2_m44fu")
 [node name="Network" type="Node3D" parent="."]
 
 [node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
-_spawnable_scenes = PackedStringArray("uid://dn6ln2qk6dbtr")
+_spawnable_scenes = PackedStringArray("uid://bew1il5ffxsac")
 spawn_path = NodePath("../Network")
