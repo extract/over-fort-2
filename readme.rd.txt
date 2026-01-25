@@ -3,8 +3,6 @@
 
 
 henrik todo
-	- rm existing bugs
-		- jetpack
 	- add capture flag victory zone
 
 
