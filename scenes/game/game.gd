@@ -43,7 +43,7 @@ func _enter_tree():
 func request_authority(idx):
 	if multiplayer.is_server():
 		print("trying to set authority from server to idx: %s" % idx)
-		heroPlayers[idx].set_authority.rpc_id(idx, idx)
+		heroPlayers[idx].set_authority.rpc(idx)
 
 # Called only on the server.
 func start_game():
