@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cho6yl7q1s760"]
+[gd_scene load_steps=8 format=3 uid="uid://blccu0n2svk1"]
 
 [ext_resource type="Script" uid="uid://dqmuhliorg0ci" path="res://scenes/abilities/rocket_launcher/rocket.gd" id="1_3341w"]
 [ext_resource type="Script" uid="uid://lnpoiudlfafe" path="res://scripts/gameplay/hitbox.gd" id="2_cjd58"]
