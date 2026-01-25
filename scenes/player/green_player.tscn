@@ -1,0 +1,84 @@
+[gd_scene load_steps=14 format=3 uid="uid://bxdarsgf1fjfj"]
+
+[ext_resource type="Script" uid="uid://delfsbhi7fgkv" path="res://scenes/player/player.gd" id="1_i2n6o"]
+[ext_resource type="Script" uid="uid://bxyw1qh8owlet" path="res://scenes/player/camera_look.gd" id="2_rlehp"]
+[ext_resource type="PackedScene" uid="uid://y36k7rxn4fpp" path="res://scenes/abilities/rocket_launcher/rocket_launcher.tscn" id="3_n6ep1"]
+[ext_resource type="Script" uid="uid://d1rjw7nsb1ymd" path="res://scripts/gameplay/hurtbox.gd" id="4_taook"]
+[ext_resource type="Script" uid="uid://55mvtmp82ky7" path="res://scripts/gameplay/health_component.gd" id="5_m14ei"]
+[ext_resource type="PackedScene" uid="uid://lr7clttuxi0j" path="res://scenes/abilities/turret/turret.tscn" id="7_vh38b"]
+[ext_resource type="PackedScene" uid="uid://dnwtc4achkn4m" path="res://scenes/abilities/dispersion/dispersion.tscn" id="8_4xpd7"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_v2ukg"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i2n6o"]
+albedo_color = Color(0, 4.7827163, 0, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_nnapv"]
+material = SubResource("StandardMaterial3D_i2n6o")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8afob"]
+albedo_color = Color(0.34256068, 0, 0.018194385, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_t08ar"]
+material = SubResource("StandardMaterial3D_8afob")
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_byj20"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath(".:rotation")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+properties/2/path = NodePath("Camera3D:rotation")
+properties/2/spawn = true
+properties/2/replication_mode = 1
+
+[node name="GreenPlayer" type="Node3D"]
+
+[node name="CharacterBody3D" type="CharacterBody3D" parent="."]
+script = ExtResource("1_i2n6o")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="CharacterBody3D"]
+shape = SubResource("CapsuleShape3D_v2ukg")
+
+[node name="Body2" type="MeshInstance3D" parent="CharacterBody3D"]
+mesh = SubResource("CapsuleMesh_nnapv")
+skeleton = NodePath("../..")
+
+[node name="Camera3D2" type="Camera3D" parent="CharacterBody3D" groups=["players"]]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4936936, -0.73905265)
+script = ExtResource("2_rlehp")
+
+[node name="Crosshair" type="Node3D" parent="CharacterBody3D/Camera3D2"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.28777575, -4.3099265)
+
+[node name="Face2" type="MeshInstance3D" parent="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.42697042, -0.15429068)
+mesh = SubResource("SphereMesh_t08ar")
+skeleton = NodePath("../..")
+
+[node name="RocketLauncher2" parent="CharacterBody3D" instance=ExtResource("3_n6ep1")]
+
+[node name="Hurtbox2" type="Area3D" parent="CharacterBody3D" node_paths=PackedStringArray("health_component")]
+script = ExtResource("4_taook")
+health_component = NodePath("Hitpoints")
+
+[node name="Hitpoints" type="Node" parent="CharacterBody3D/Hurtbox2"]
+script = ExtResource("5_m14ei")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D/Hurtbox2"]
+shape = SubResource("CapsuleShape3D_v2ukg")
+
+[node name="Dispersion2" parent="CharacterBody3D" instance=ExtResource("8_4xpd7")]
+
+[node name="AudioListener3D2" type="AudioListener3D" parent="CharacterBody3D"]
+
+[node name="MultiplayerSynchronizer2" type="MultiplayerSynchronizer" parent="CharacterBody3D"]
+root_path = NodePath("../..")
+replication_config = SubResource("SceneReplicationConfig_byj20")
+
+[node name="RocketLauncher3" parent="CharacterBody3D" instance=ExtResource("3_n6ep1")]
+action_key = "right_mouse"
+rocket = ExtResource("7_vh38b")
