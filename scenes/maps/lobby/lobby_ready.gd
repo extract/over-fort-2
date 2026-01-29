@@ -1,13 +1,14 @@
 extends Button
+class_name PontusReadyToStartButton
 
-@onready var multiplayerSetupNode
-var pressMeansHost = false
+@onready var multiplayerSetupNode:PontusMultiplayerNode
+var pressMeansHost:bool = false
 
-func game_ready_mode():
+func game_ready_mode()->void:
 	pressMeansHost = true
 
 @rpc("any_peer", "call_local", "reliable")
-func inform_ready_state(id) -> void:
+func inform_ready_state(id:int) -> void:
 	print_debug("Player %s now ready" % id)
 	multiplayerSetupNode.update_player_ready_status(id, true)
 	

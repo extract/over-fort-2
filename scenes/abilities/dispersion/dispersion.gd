@@ -1,17 +1,17 @@
 extends Node3D
 
-
-@export var action_key = "e"
+@onready var asp: AudioStreamPlayer3D = $AudioStreamPlayer3D
+@export var action_key:String = "e"
 @export var projectile: PackedScene
 
-@export var cooldown = 2
-var remaining_cooldown = 0
+@export var cooldown:float = 2
+var remaining_cooldown :float= 0
 
 @rpc("any_peer", "call_local", "reliable")
-func doAction():
-	$AudioStreamPlayer3D.play()
+func doAction()->void:
+	asp.play()
 	remaining_cooldown = cooldown
-	var inst = projectile.instantiate()
+	var inst:Node3D = projectile.instantiate()
 	inst.transform = (%Crosshair as Node3D).global_transform
 	get_node("/root").add_child(inst)
 

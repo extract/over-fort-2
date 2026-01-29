@@ -1,19 +1,20 @@
 extends Node3D
 
 
-@export var action_key = "right_mouse"
+@export var action_key:String = "right_mouse"
 @export var float_shield: PackedScene
 var inst: Node3D
 
-@export var cooldown = 2
-var cooldown_left = 0
-var is_shield_active = false
-@export var shield_speed = 4
+@export var cooldown:float = 2
+var cooldown_left:float = 0
+var is_shield_active:bool = false
+@export var shield_speed:float = 4
 
 @onready var asp: AudioStreamPlayer3D = $AudioStreamPlayer3D
+@onready var crosshair: Node3D = %Crosshair
 
 @rpc("any_peer", "call_local", "reliable")
-func doAction():
+func doAction()->void:
 	asp.play()
 	cooldown_left = cooldown
 	
@@ -22,7 +23,7 @@ func doAction():
 		is_shield_active = false
 	else:
 		inst = float_shield.instantiate()
-		inst.transform = %Crosshair.global_transform
+		inst.transform = crosshair.global_transform
 		get_node("/root").add_child(inst)
 		is_shield_active = true
 	

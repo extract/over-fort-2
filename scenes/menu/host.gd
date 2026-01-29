@@ -1,19 +1,15 @@
 extends Button
 
-@onready var multiplayerSetupNode = $"../../../MultiplayerSetup"
+@onready var multiplayerSetupNode:PontusMultiplayerNode = $"../../../MultiplayerSetup"
 
 #var peers : Map = []
 
-var PORT = 21057
+var PORT:int = 21057
 
-@onready var menuNode = (($"../..") as Control)
+@onready var menuNode: Control = (($"../..") as Control)
 
 
 func _on_pressed() -> void:
 	print("Hello $PORT", PORT)
 	multiplayerSetupNode.host_game(PORT)
 	pass # Replace with function body.
-
-func _ready():
-	pass
-	

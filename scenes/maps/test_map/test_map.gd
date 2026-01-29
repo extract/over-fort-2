@@ -1,9 +1,10 @@
 extends Node
+class_name TestMapNode
 
 @export var SpawnList : Array[Node3D]
 
 
-func quick_func_thing(idx) -> Node3D:
+func quick_func_thing(idx:int) -> Node3D:
 	return SpawnList[idx % SpawnList.size()]
 		
 

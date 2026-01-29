@@ -1,34 +1,35 @@
-[gd_scene load_steps=4 format=3 uid="uid://dsqddxnd6obw"]
+[gd_scene format=3 uid="uid://dsqddxnd6obw"]
 
 [ext_resource type="PackedScene" uid="uid://du0ni00nm5poi" path="res://scenes/shapes/static/floor_10x_10.tscn" id="1_by1pr"]
-[ext_resource type="Script" path="res://scenes/maps/lobby/lobby_manager.gd" id="1_iupu6"]
+[ext_resource type="Script" uid="uid://ctbggx720mcnf" path="res://scenes/maps/lobby/lobby_manager.gd" id="1_iupu6"]
 [ext_resource type="PackedScene" uid="uid://capis0p76uoxd" path="res://scenes/maps/lobby/lobby_ui.tscn" id="2_4t2je"]
 
-[node name="Lobby" type="Node3D" node_paths=PackedStringArray("slots")]
+[node name="Lobby" type="Node3D" unique_id=1968014517 node_paths=PackedStringArray("slots")]
 script = ExtResource("1_iupu6")
 slots = [NodePath("PlayerPos1"), NodePath("PlayerPos2"), NodePath("PlayerPos3")]
+slotsTaken = null
 
-[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="." unique_id=1701000646]
 _spawnable_scenes = PackedStringArray("uid://dn6ln2qk6dbtr", "uid://cyjfreye6e0em")
 spawn_path = NodePath("..")
 
-[node name="Floor10x10" parent="." instance=ExtResource("1_by1pr")]
+[node name="Floor10x10" parent="." unique_id=1011759008 instance=ExtResource("1_by1pr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.8027499, 3.6703434)
 
-[node name="Camera3D" type="Camera3D" parent="."]
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1980355445]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.079503775, 0)
 
-[node name="LobbyUi" parent="." instance=ExtResource("2_4t2je")]
+[node name="LobbyUi" parent="." unique_id=1880165317 instance=ExtResource("2_4t2je")]
 unique_name_in_owner = true
 offset_right = -953.8957
 offset_bottom = -620.51184
 scale = Vector2(1.055, 1.055)
 
-[node name="PlayerPos3" type="Node3D" parent="."]
+[node name="PlayerPos3" type="Node3D" parent="." unique_id=2062430321]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.7888671, 0, 0)
 
-[node name="PlayerPos2" type="Node3D" parent="."]
+[node name="PlayerPos2" type="Node3D" parent="." unique_id=2048904392]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.16273206, 0.031909943, 0)
 
-[node name="PlayerPos1" type="Node3D" parent="."]
+[node name="PlayerPos1" type="Node3D" parent="." unique_id=1116240986]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6454853, 0, 0)

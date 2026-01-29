@@ -1,12 +1,12 @@
 extends Node3D
 
-@export var speed = 10
-@export var lifetime = 10
+@export var speed:float = 10
+@export var lifetime :float= 10
 
 @onready var asp1: AudioStreamPlayer3D = $AudioStreamPlayer3D
 @onready var asp2: AudioStreamPlayer3D = $AudioStreamPlayer3D2
 @onready var timer: Timer = $Timer
-var is_dead=false
+var is_dead:bool=false
 
 func _process(delta: float) -> void:
 	position -= transform.basis.z * speed * delta
@@ -16,11 +16,11 @@ func _process(delta: float) -> void:
 		explode()
 	
 
-func explode():
+func explode()->void:
 	if is_dead:
 		return
 	is_dead=true
-	var i = randi() % 2
+	var i :int= randi() % 2
 	if i == 0:
 		asp1.play()
 	else:

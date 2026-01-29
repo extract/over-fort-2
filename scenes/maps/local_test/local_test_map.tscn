@@ -1,48 +1,48 @@
-[gd_scene load_steps=5 format=3 uid="uid://dqhhnv08q6fe6"]
+[gd_scene format=3 uid="uid://dqhhnv08q6fe6"]
 
 [ext_resource type="PackedScene" uid="uid://dgsrfg1p7easw" path="res://scenes/shapes/dynamic/box.tscn" id="1_2es1a"]
 [ext_resource type="PackedScene" uid="uid://hty8edbtyqdb" path="res://scenes/shapes/static/floor_100_x_100.tscn" id="2_tc2xj"]
 [ext_resource type="PackedScene" uid="uid://du0ni00nm5poi" path="res://scenes/shapes/static/floor_10x_10.tscn" id="3_v82ge"]
 [ext_resource type="PackedScene" uid="uid://bxdarsgf1fjfj" path="res://scenes/player/green_player.tscn" id="4_2es1a"]
 
-[node name="LocalTestMap" type="Node"]
+[node name="LocalTestMap" type="Node" unique_id=1378010133]
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1833013874]
 transform = Transform3D(1, 0, 0, 0, 0.5465113, 0.83745176, 0, -0.83745176, 0.5465113, 0, 7.6711407, 7.299741)
 light_color = Color(1, 1, 0.8745098, 1)
 
-[node name="Bunch of boxes" type="Node" parent="."]
+[node name="Bunch of boxes" type="Node" parent="." unique_id=1881542141]
 
-[node name="Box" parent="Bunch of boxes" instance=ExtResource("1_2es1a")]
+[node name="Box" parent="Bunch of boxes" unique_id=1550909595 instance=ExtResource("1_2es1a")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.4083147, -3.2461233)
 
-[node name="HittableBox" parent="Bunch of boxes" instance=ExtResource("1_2es1a")]
+[node name="HittableBox" parent="Bunch of boxes" unique_id=1727642741 instance=ExtResource("1_2es1a")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.7144995, -3.2461233)
 
-[node name="HittableBox2" parent="Bunch of boxes" instance=ExtResource("1_2es1a")]
+[node name="HittableBox2" parent="Bunch of boxes" unique_id=558880910 instance=ExtResource("1_2es1a")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.0041933, -3.2461233)
 
-[node name="Box2" parent="Bunch of boxes" instance=ExtResource("1_2es1a")]
+[node name="Box2" parent="Bunch of boxes" unique_id=422482522 instance=ExtResource("1_2es1a")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.502559, -3.2461233)
 
-[node name="Box3" parent="Bunch of boxes" instance=ExtResource("1_2es1a")]
+[node name="Box3" parent="Bunch of boxes" unique_id=331717898 instance=ExtResource("1_2es1a")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.7478743, 2.8200998, -3.2461233)
 
-[node name="Box4" parent="Bunch of boxes" instance=ExtResource("1_2es1a")]
+[node name="Box4" parent="Bunch of boxes" unique_id=824526764 instance=ExtResource("1_2es1a")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3116567, 4.0144024, -3.2461233)
 
-[node name="Map" type="Node3D" parent="."]
+[node name="Map" type="Node3D" parent="." unique_id=1536950007]
 
-[node name="Floor100x100" parent="Map" instance=ExtResource("2_tc2xj")]
+[node name="Floor100x100" parent="Map" unique_id=398370900 instance=ExtResource("2_tc2xj")]
 
-[node name="Floor10x10" parent="Map" instance=ExtResource("3_v82ge")]
+[node name="Floor10x10" parent="Map" unique_id=1346725293 instance=ExtResource("3_v82ge")]
 transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, -14.982987, 5, 10.458367)
 
-[node name="Floor10x12" parent="Map" instance=ExtResource("3_v82ge")]
+[node name="Floor10x12" parent="Map" unique_id=653372793 instance=ExtResource("3_v82ge")]
 transform = Transform3D(0.25584882, 0.44314346, -0.85916543, 0.42958266, 0.7440591, 0.51169795, 0.86602545, -0.4999999, -9.170982e-08, -12.537475, 5.7427588, 10.093729)
 
-[node name="Floor10x11" parent="Map" instance=ExtResource("3_v82ge")]
+[node name="Floor10x11" parent="Map" unique_id=1115320673 instance=ExtResource("3_v82ge")]
 transform = Transform3D(-5.732056e-15, 4.371139e-08, 1, 1, 1.3113416e-07, 0, -1.3113416e-07, 1, -4.371139e-08, -9.982986, 4.9829865, 15.916735)
 
-[node name="GreenPlayer" parent="." instance=ExtResource("4_2es1a")]
+[node name="GreenPlayer" parent="." unique_id=1194261620 instance=ExtResource("4_2es1a")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.9085972, 0)

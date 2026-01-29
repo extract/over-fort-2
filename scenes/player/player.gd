@@ -1,13 +1,16 @@
 extends CharacterBody3D
+class_name Player
 
+@onready var camera: Camera3D = $Camera3D
+@onready var game: PontusGame = $"/root/Game"
 
-@export var speed = 5.0
-@export var jump_velocity = 4.5
+@export var speed:float = 5.0
+@export var jump_velocity:float = 4.5
 
-@export var mouse_sensitivity = 0.01
-@export var team = 1
+@export var mouse_sensitivity :float= 0.01
+@export var team :int= 1
 
-@export var player_id := 1:
+@export var player_id :int= 1:
 	set(id):
 		player_id = id
 		set_multiplayer_authority(id)
@@ -15,19 +18,19 @@ extends CharacterBody3D
 var spawn_point : Vector3
 
 @rpc("authority", "call_local", "reliable")
-func _set_global_position(newGlobalPos):
+func _set_global_position(newGlobalPos:Vector3)->void:
 	global_transform.origin = newGlobalPos
 	
 @rpc("authority", "call_local", "reliable")
-func _set_spawn_point(newGlobalPos):
+func _set_spawn_point(newGlobalPos:Vector3)->void:
 	spawn_point = newGlobalPos
 	
 @rpc("authority", "call_local", "reliable")
-func _activate_camera():
-	$Camera3D.make_current()
+func _activate_camera()->void:
+	camera.make_current()
 
 @rpc("authority", "call_local", "reliable")
-func set_authority(player_id_):
+func set_authority(player_id_:int)->void:
 	print("set authority from server to idx: ", player_id_, " on ", multiplayer.get_unique_id())
 	player_id = player_id_
 	set_multiplayer_authority(player_id_)
@@ -42,7 +45,8 @@ func get_health() -> float:
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
-		rotate_y(-event.relative.x * mouse_sensitivity)
+		var mouse_event: InputEventMouseMotion=event
+		rotate_y(-mouse_event.relative.x * mouse_sensitivity)
 
 	if event.is_action_pressed("ui_cancel"):
 		get_tree().quit()
@@ -50,7 +54,7 @@ var authority_set : bool = false
 
 func _physics_process(delta: float) -> void:
 	if !is_multiplayer_authority() and multiplayer.is_server() and !authority_set:
-		get_node("/root/Game").request_authority(player_id)
+		game.request_authority(player_id)
 		authority_set = true
 		return
 	# Add the gravity.
@@ -63,8 +67,8 @@ func _physics_process(delta: float) -> void:
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
-	var input_dir := Input.get_vector("left", "right", "forward", "backward")
-	var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+	var input_dir :Vector2= Input.get_vector("left", "right", "forward", "backward")
+	var direction :Vector3= (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	if direction:
 		velocity.x = direction.x * speed
 		velocity.z = direction.z * speed
@@ -72,4 +76,4 @@ func _physics_process(delta: float) -> void:
 		velocity.x = move_toward(velocity.x, 0, speed)
 		velocity.z = move_toward(velocity.z, 0, speed)
 
-	move_and_slide()
+	var _err:bool=move_and_slide()

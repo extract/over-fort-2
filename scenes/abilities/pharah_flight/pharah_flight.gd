@@ -1,10 +1,10 @@
 extends Node3D
 
-@export var max_fly_time = 5
-var remaining_fly_time = max_fly_time
-@export var fly_power = 0.15
+@export var max_fly_time:float = 5
+var remaining_fly_time:float = max_fly_time
+@export var fly_power:float = 0.15
 
-@export var action_key = "jump"
+@export var action_key :String= "jump"
 
 @onready var cb: CharacterBody3D = $".."
 @onready var asp: AudioStreamPlayer3D = $AudioStreamPlayer3D

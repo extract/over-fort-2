@@ -1,13 +1,14 @@
 extends Area3D
 
-@export var speed = 18
-@export var explosion_force = 10
-@export var radius = 7
+@export var speed:float = 18
+@export var explosion_force:float = 10
+@export var radius:float = 7
 
-
+@onready var blast_sphere: CollisionShape3D = $BlastRadius/CollisionShape3D
+@onready var asp: AudioStreamPlayer3D = $AudioStreamPlayer3D
 
 func _ready() -> void:
-	($BlastRadius/CollisionShape3D as CollisionShape3D).shape.radius = radius
+	(blast_sphere.shape as SphereShape3D).radius = radius
 
 func _process(delta: float) -> void:
 	position -= transform.basis.z * speed * delta
@@ -15,9 +16,9 @@ func _process(delta: float) -> void:
 
 
 func _on_body_entered(_body: Node3D) -> void:
-	$AudioStreamPlayer3D.play()
-	for b in ($BlastRadius as Area3D).get_overlapping_bodies():
-		var dir = (b.position - position).normalized()
+	asp.play()
+	for b: Node3D in ($BlastRadius as Area3D).get_overlapping_bodies():
+		var dir:Vector3 = (b.position - position).normalized()
 		if b is RigidBody3D:
 			(b as RigidBody3D).apply_impulse(dir * explosion_force)
 		if b is CharacterBody3D:

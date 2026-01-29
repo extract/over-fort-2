@@ -1,21 +1,17 @@
 extends Button
 
-var PORT = 21057
-@onready var lineEdit = $"../LineEdit"
-@onready var multiplayerSetupNode = $"../../../MultiplayerSetup"
- 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass
+var PORT:int = 21057
+@onready var lineEdit:LineEdit = $"../LineEdit"
+@onready var multiplayerSetupNode: PontusMultiplayerNode = $"../../../MultiplayerSetup"
 
 func _on_pressed() -> void:
-	var userInput = lineEdit.text
-	var port = PORT
-	var ip = "127.0.0.1"
+	var userInput:String = lineEdit.text
+	var port:int = PORT
+	var ip:String = "127.0.0.1"
 	if len(userInput) > 0:
 		if text.find(":") != -1:
 			ip = userInput.split(":")[0]
-			port = int(userInput.split(":")[1])
+			port = userInput.split(":")[1] as int
 		else:
 			ip = userInput
 	print(ip, port)

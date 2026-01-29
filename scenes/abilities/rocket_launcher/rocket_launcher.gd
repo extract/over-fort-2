@@ -1,16 +1,16 @@
 extends Node3D
 
 
-@export var action_key = ""
+@export var action_key :String= ""
 @export var rocket: PackedScene
-@export var cooldown = 1.0
+@export var cooldown:float = 1.0
 @export var spawnPoint : Node3D
-var cooldown_left=0
+var cooldown_left:float=0
 
 @onready var asp: AudioStreamPlayer3D = $AudioStreamPlayer3D
 
 @rpc("any_peer", "call_local", "reliable")
-func doAbility():
+func doAbility()->void:
 	asp.play()
 	
 	cooldown_left = cooldown
