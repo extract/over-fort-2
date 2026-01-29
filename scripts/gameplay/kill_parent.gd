@@ -1,8 +1,8 @@
 extends Node
 
-
 # This creates a slot in the Inspector window
-@export var health_component: HealthComponent 
+@export var health_component: HealthComponent
+
 
 func _ready() -> void:
 	if health_component:
@@ -10,5 +10,6 @@ func _ready() -> void:
 	else:
 		push_error("HealthComponent not assigned to " + owner.name)
 
-func _on_died():
+
+func _on_died() -> void:
 	get_parent().queue_free()

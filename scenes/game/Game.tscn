@@ -1,11 +1,11 @@
 [gd_scene format=3 uid="uid://e217n2rh1722"]
 
 [ext_resource type="Script" uid="uid://bkasnarjkd4rq" path="res://scenes/game/game.gd" id="1_klkup"]
-[ext_resource type="PackedScene" uid="uid://bew1il5ffxsac" path="res://scenes/player/local_player.tscn" id="2_m44fu"]
+[ext_resource type="PackedScene" uid="uid://dn6ln2qk6dbtr" path="res://scenes/player/player.tscn" id="2_m44fu"]
 
 [node name="Game" type="Node3D" unique_id=1903492703]
 script = ExtResource("1_klkup")
-defaultPlayerScene = ExtResource("2_m44fu")
+default_player_scene = ExtResource("2_m44fu")
 
 [node name="Network" type="Node3D" parent="." unique_id=1013102053]
 
