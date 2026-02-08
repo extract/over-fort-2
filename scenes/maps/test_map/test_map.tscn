@@ -1,37 +1,37 @@
-[gd_scene load_steps=5 format=3 uid="uid://cyjfreye6e0em"]
+[gd_scene format=3 uid="uid://cyjfreye6e0em"]
 
 [ext_resource type="PackedScene" uid="uid://du0ni00nm5poi" path="res://scenes/shapes/static/floor_10x_10.tscn" id="1_2s55i"]
-[ext_resource type="Script" path="res://scenes/maps/test_map/test_map.gd" id="1_vki1u"]
+[ext_resource type="Script" uid="uid://buyuucje1d4ie" path="res://scenes/maps/test_map/test_map.gd" id="1_vki1u"]
 [ext_resource type="PackedScene" uid="uid://hty8edbtyqdb" path="res://scenes/shapes/static/floor_100_x_100.tscn" id="3_38prr"]
 [ext_resource type="PackedScene" uid="uid://dgsrfg1p7easw" path="res://scenes/shapes/dynamic/box.tscn" id="3_o3n0h"]
 
-[node name="TestMap" type="Node" node_paths=PackedStringArray("SpawnList")]
+[node name="TestMap" type="Node" unique_id=236248146 node_paths=PackedStringArray("spawn_list")]
 script = ExtResource("1_vki1u")
-SpawnList = [NodePath("Spawn1"), NodePath("Spawn2"), NodePath("Spawn3")]
+spawn_list = [NodePath("Spawn1"), NodePath("Spawn2"), NodePath("Spawn3")]
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=827972843]
 transform = Transform3D(1, 0, 0, 0, 0.5465113, 0.83745176, 0, -0.83745176, 0.5465113, 0, 7.6711407, 7.299741)
 light_color = Color(1, 1, 0.8745098, 1)
 
-[node name="Box" parent="." instance=ExtResource("3_o3n0h")]
+[node name="Box" parent="." unique_id=1732272649 instance=ExtResource("3_o3n0h")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.4083147, -3.2461233)
 
-[node name="Floor100x100" parent="." instance=ExtResource("3_38prr")]
+[node name="Floor100x100" parent="." unique_id=2002799940 instance=ExtResource("3_38prr")]
 
-[node name="Floor10x10" parent="." instance=ExtResource("1_2s55i")]
+[node name="Floor10x10" parent="." unique_id=213860959 instance=ExtResource("1_2s55i")]
 transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, -14.982987, 5, 10.458367)
 
-[node name="Floor10x12" parent="." instance=ExtResource("1_2s55i")]
+[node name="Floor10x12" parent="." unique_id=1877098319 instance=ExtResource("1_2s55i")]
 transform = Transform3D(0.25584882, 0.44314346, -0.85916543, 0.42958266, 0.7440591, 0.51169795, 0.86602545, -0.4999999, -9.170982e-08, -12.537475, 5.7427588, 10.093729)
 
-[node name="Floor10x11" parent="." instance=ExtResource("1_2s55i")]
+[node name="Floor10x11" parent="." unique_id=616001265 instance=ExtResource("1_2s55i")]
 transform = Transform3D(-5.732056e-15, 4.371139e-08, 1, 1, 1.3113416e-07, 0, -1.3113416e-07, 1, -4.371139e-08, -9.982986, 4.9829865, 15.916735)
 
-[node name="Spawn1" type="Node3D" parent="."]
+[node name="Spawn1" type="Node3D" parent="." unique_id=118492859]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.0418172, 0)
 
-[node name="Spawn2" type="Node3D" parent="."]
+[node name="Spawn2" type="Node3D" parent="." unique_id=1545513674]
 transform = Transform3D(0.27565414, 0, 0.96125686, 0, 1, 0, -0.96125686, 0, 0.27565414, 3.2854087, 2.8758163, 0)
 
-[node name="Spawn3" type="Node3D" parent="."]
+[node name="Spawn3" type="Node3D" parent="." unique_id=2100106983]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.918933, 2.6906118, 0)
