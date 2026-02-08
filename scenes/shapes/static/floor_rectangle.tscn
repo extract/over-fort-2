@@ -1,18 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://eud7kykttiua"]
+[gd_scene format=3 uid="uid://eud7kykttiua"]
 
 [ext_resource type="PackedScene" uid="uid://du0ni00nm5poi" path="res://scenes/shapes/static/floor_10x_10.tscn" id="1_c4gup"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c4gup"]
-albedo_color = Color(0.2509148, 0.2509148, 0.2509148, 1)
+[node name="FloorRectangle" type="Node3D" unique_id=328087483]
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_1gn4b"]
-material = SubResource("StandardMaterial3D_c4gup")
-size = Vector2(10.1, 10.1)
-
-[node name="FloorRectangle" type="Node3D"]
-
-[node name="Floor10x10" parent="." instance=ExtResource("1_c4gup")]
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.53097785, 0)
-mesh = SubResource("PlaneMesh_1gn4b")
+[node name="Floor10x10" parent="." unique_id=1269834240 instance=ExtResource("1_c4gup")]

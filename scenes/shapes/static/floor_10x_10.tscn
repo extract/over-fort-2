@@ -1,15 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://du0ni00nm5poi"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_013ki"]
-size = Vector3(10, 1, 10)
+[gd_scene format=3 uid="uid://du0ni00nm5poi"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_v37vl"]
 
-[node name="Floor10x10" type="StaticBody3D"]
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_5422t"]
+points = PackedVector3Array(0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-shape = SubResource("BoxShape3D_013ki")
+[node name="Floor10x10" type="StaticBody3D" unique_id=1248425530]
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1480803784]
 transform = Transform3D(10, 0, 0, 0, 1, 0, 0, 0, 10, 0, 0, 0)
 mesh = SubResource("BoxMesh_v37vl")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1713791012]
+shape = SubResource("ConvexPolygonShape3D_5422t")
