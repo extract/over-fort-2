@@ -1,0 +1,51 @@
+[gd_scene format=3 uid="uid://dxihkgkvadvf6"]
+
+[ext_resource type="Script" uid="uid://vqylal45mlcd" path="res://scripts/gameplay/remove_on_death.gd" id="1_aty24"]
+[ext_resource type="Texture2D" uid="uid://d3b1rbpqr0dy7" path="res://assets/Barrel/Barrel/Textures/low_Barrel_BaseColor.1001.png" id="1_d1qe5"]
+[ext_resource type="ArrayMesh" uid="uid://bct7t1iilfks6" path="res://assets/Barrel/Barrel/Models/barrel.obj" id="1_iaf8d"]
+[ext_resource type="Script" uid="uid://d1rjw7nsb1ymd" path="res://scripts/gameplay/hurtbox.gd" id="3_ol1l0"]
+[ext_resource type="Script" uid="uid://55mvtmp82ky7" path="res://scripts/gameplay/health_component.gd" id="4_aty24"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j6ryj"]
+albedo_texture = ExtResource("1_d1qe5")
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_msin2"]
+points = PackedVector3Array(415.0573, 11.370483, -39.887127, -441.1567, -23.101807, -24.966583, 94.40437, 550.5671, 322.5137, -44.87513, 516.61035, -356.33423, 254.19514, -552.56683, 62.53938, 58.945606, -504.93137, -317.41364, -80.315315, -533.2295, 290.65384, -358.87927, 517.15784, 61.91697, 24.45557, -22.984697, 439.23917, 230.26451, 543.0957, -213.47528, -233.88132, -488.48373, -197.3037, -242.6242, 27.84786, 342.09177, -243.40623, 27.901255, -341.46274, 341.51233, -22.051033, 243.3174, 241.76834, -22.134972, -342.79654, 355.90955, 516.60834, -25.231033, -27.134506, -23.115063, -439.16788, -251.25642, -523.09973, 130.06801, -253.08562, 549.75183, -181.4759, 284.33676, -490.6546, -111.65513, 145.51642, -489.3891, 268.44754, -130.37598, 545.0083, 284.8208, -287.97223, -544.8161, -77.31064, -342.46848, -21.892595, 242.16805, 342.41983, 27.967909, -242.2245, 436.91562, -22.971724, 26.603838, 284.09995, 478.19504, 182.46385, 240.98631, 27.912268, 343.42557, -343.37598, -21.981071, -241.07513, 300.0433, -505.19333, 95.52319, 77.010216, -545.69, -286.26468, -113.64796, -489.91772, -284.2545)
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_078kj"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/replication_mode = 2
+properties/1/path = NodePath(".:rotation")
+properties/1/spawn = true
+properties/1/replication_mode = 2
+
+[node name="Barrel" type="Node3D" unique_id=441213152 node_paths=PackedStringArray("health_component")]
+script = ExtResource("1_aty24")
+health_component = NodePath("Hitpoints")
+
+[node name="Barrel" type="MeshInstance3D" parent="." unique_id=982483631]
+transform = Transform3D(0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, 0.10697591, 0, 0.11003661)
+material_override = SubResource("StandardMaterial3D_j6ryj")
+mesh = ExtResource("1_iaf8d")
+
+[node name="RigidBody3D" type="RigidBody3D" parent="." unique_id=1279558411]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D" unique_id=1489705020]
+transform = Transform3D(0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, 0.10697591, 0, 0.11003661)
+shape = SubResource("ConvexPolygonShape3D_msin2")
+
+[node name="Hurtbox" type="Area3D" parent="." unique_id=1825090673 node_paths=PackedStringArray("health_component")]
+script = ExtResource("3_ol1l0")
+health_component = NodePath("../Hitpoints")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Hurtbox" unique_id=2135098420]
+transform = Transform3D(0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, 0.10697591, 0, 0.11003661)
+shape = SubResource("ConvexPolygonShape3D_msin2")
+
+[node name="Hitpoints" type="Node" parent="." unique_id=1887782367]
+script = ExtResource("4_aty24")
+max_health = 1.0
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="." unique_id=473372779]
+replication_config = SubResource("SceneReplicationConfig_078kj")
