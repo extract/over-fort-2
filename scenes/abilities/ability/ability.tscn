@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://qs6ofnd6i1lq"]
+
+[ext_resource type="Script" uid="uid://c7vko88wgned0" path="res://scenes/abilities/ability/ability.gd" id="1_gulhv"]
+
+[node name="Ability" type="Node3D"]
+script = ExtResource("1_gulhv")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
