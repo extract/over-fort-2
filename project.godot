@@ -16,7 +16,7 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 
 config/name="OverFort2"
 run/main_scene="uid://cho0rrlnqk2wt"
-config/features=PackedStringArray("4.6", "Forward Plus")
+config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
 
 [debug]
@@ -47,7 +47,6 @@ gdscript/warnings/static_called_on_instance=2
 gdscript/warnings/missing_tool=2
 gdscript/warnings/redundant_static_unload=2
 gdscript/warnings/redundant_await=2
-gdscript/warnings/missing_await=2
 gdscript/warnings/assert_always_true=2
 gdscript/warnings/assert_always_false=2
 gdscript/warnings/integer_division=2
@@ -62,6 +61,7 @@ gdscript/warnings/confusable_local_declaration=2
 gdscript/warnings/confusable_local_usage=2
 gdscript/warnings/confusable_capture_reassignment=2
 shader_language/warnings/treat_warnings_as_errors=true
+gdscript/warnings/missing_await=2
 
 [display]
 

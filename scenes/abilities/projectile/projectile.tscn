@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://df2edulv4h5gb"]
+
+[ext_resource type="Script" uid="uid://cnvom7pgrrl1m" path="res://scenes/abilities/projectile/projectile.gd" id="1_7muly"]
+
+[node name="Projectile" type="Node3D"]
+script = ExtResource("1_7muly")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+
+[connection signal="finished" from="AudioStreamPlayer3D" to="." method="_on_audio_stream_player_3d_finished"]

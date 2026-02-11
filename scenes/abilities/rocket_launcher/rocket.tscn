@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" uid="uid://dqmuhliorg0ci" path="res://scenes/abilities/rocket_launcher/rocket.gd" id="1_3341w"]
 [ext_resource type="Script" uid="uid://lnpoiudlfafe" path="res://scripts/gameplay/hitbox.gd" id="2_cjd58"]
+[ext_resource type="AudioStream" uid="uid://bgyopnvpyqrxe" path="res://scenes/abilities/rocket_launcher/rocket_launch.mp3" id="2_jnhbt"]
 [ext_resource type="AudioStream" uid="uid://0dwmi4mx1gk5" path="res://scenes/abilities/rocket_launcher/explosion1.mp3" id="3_jnhbt"]
-[ext_resource type="AudioStream" uid="uid://cuxuj75g52wna" path="res://scenes/abilities/rocket_launcher/explosion2.mp3" id="4_mgciu"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qkmm1"]
 albedo_color = Color(0.593, 3.609, 12.061, 1)
@@ -27,6 +27,7 @@ material = SubResource("StandardMaterial3D_mgciu")
 
 [node name="Rocket" type="Node3D"]
 script = ExtResource("1_3341w")
+sound = ExtResource("2_jnhbt")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.2, 0, 0, 0, -2.1855694e-08, -0.2, 0, 0.5, -8.742278e-09, 0, 0, 0)
@@ -40,15 +41,8 @@ damage = 25.0
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
 shape = SubResource("CapsuleShape3D_dkv7l")
 
-[node name="Node3D" type="Node3D" parent="."]
-
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("3_jnhbt")
-
-[node name="AudioStreamPlayer3D2" type="AudioStreamPlayer3D" parent="."]
-stream = ExtResource("4_mgciu")
-
-[node name="Timer" type="Timer" parent="."]
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="."]
 emitting = false
@@ -59,6 +53,6 @@ process_material = SubResource("ParticleProcessMaterial_jnhbt")
 draw_pass_1 = SubResource("SphereMesh_3jbua")
 draw_skin = SubResource("Skin_pr3s5")
 
+[connection signal="collision" from="." to="." method="_on_collision"]
 [connection signal="area_entered" from="HitBox" to="." method="_on_hit_box_area_entered"]
 [connection signal="body_entered" from="HitBox" to="." method="_on_hit_box_body_entered"]
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
